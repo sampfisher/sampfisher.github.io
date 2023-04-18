@@ -7,12 +7,9 @@
     </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-#myDIV {
-  width: 50%;
-  padding: 50px 0;
-  text-align: center;
-  background-color: none;
-  margin-top: 20px;
+.bord {
+  display: inline-block;
+  padding: 3px;
 }
 @font-face {
     font-family: "Computer Modern";
@@ -63,7 +60,7 @@ function hide(y) {
 </script>
 
 </head>
-<body>
+<body onload="['l2_fibring','IMM_fibring','modp_growth','div_rings'].forEach(hide)">
 
 <center>
     <h1>Sam Fisher</h1>
@@ -91,13 +88,23 @@ function hide(y) {
     </h3>
     <ol>
         <li onclick="displayabs('l2_fibring')">Improved algebraic fibrings, <i>submitted</i>. <a href="https://arxiv.org/abs/2112.00397">arXiv</a></li>
-            <div id="l2_fibring">
-                We show that a virtually RFRS group \(G\) of type \(\mathrm{FP}_n(\mathbb{Q})\) virtually algebraically fibres with kernel of type \(\mathrm{FP}_n(\mathbb{Q})\) if and only if the first n ℓ2-Betti numbers of G vanish, that is, b(2)p(G)=0 for 0⩽p⩽n. We also offer a variant of this result over other fields, in particular in positive characteristic.
-                As an application of the main result, we show that virtually amenable RFRS groups of type FP(Q) are polycyclic-by-finite. It then follows that if G is a virtually RFRS group of type FP(Q) such that ZG is Noetherian, then G is polycyclic-by-finite. This answers a longstanding conjecture of Baer for virtually RFRS groups of type FP(Q). 
+            <div class="bord", id="l2_fibring">
+                <p>We show that a virtually RFRS group \(G\) of type \(\mathrm{FP}_n(\mathbb{Q})\) virtually algebraically fibres with kernel of type \(\mathrm{FP}_n(\mathbb{Q})\) if and only if the first n \(\ell^2\)-Betti numbers of \(G\) vanish, that is, \(b^{(2)}_p(G)=0\) for \(0 \leqslant p \leqslant n\). We also offer a variant of this result over other fields, in particular in positive characteristic.</p> 
+                <p>As an application of the main result, we show that virtually amenable RFRS groups of type \(\mathrm{FP}_n(\mathbb{Q})\) are polycyclic-by-finite. It then follows that if \(G\) is a virtually RFRS group of type \(\mathrm{FP}_n(\mathbb{Q})\) such that \(\mathbb ZG\) is Noetherian, then \(G\) is polycyclic-by-finite. This answers a longstanding conjecture of Baer for virtually RFRS groups of type \(\mathrm{FP}_n(\mathbb{Q})\).</p>
             </div>            
-        <li>Algebraic fibring of a hyperbolic \(7\)-manifold, <i>Bull. Lond. Math. Soc.</i> <a href="https://londmathsoc.onlinelibrary.wiley.com/doi/full/10.1112/blms.12795">Published version (open access)</a> <a href="https://arxiv.org/abs/2203.01125">arXiv</a></li>
-        <li>Homological growth of Artin kernels in positive characteristic (with <a href="https://samhughesmaths.github.io/">Sam Hughes</a> and <a href="https://www.southampton.ac.uk/people/5x7v5y/professor-ian-leary">Ian J. Leary</a>), <i>submitted</i>. <a href="https://arxiv.org/abs/2212.03187">arXiv</a></li>
-        <li>Division rings for group algebras of virtually compact special groups (with <a href="https://sites.google.com/view/pablosanchez-peralta/"> Pablo Sánchez-Peralta</a>). <a href="https://arxiv.org/abs/2303.08165">arXiv</a></li>
+        <li onclick="displayabs('IMM_fibring')">Algebraic fibring of a hyperbolic \(7\)-manifold, <i>Bull. Lond. Math. Soc.</i> <a href="https://londmathsoc.onlinelibrary.wiley.com/doi/full/10.1112/blms.12795">Published version (open access)</a> <a href="https://arxiv.org/abs/2203.01125">arXiv</a></li>
+            <div class="bord", id="IMM_fibring">
+                <p>We show there is a finite-volume, hyperbolic \(7\)-manifold that algebraically fibres with finitely presented kernel of type \(\mathtt{FP}(\mathbb Q)\). This manifold is a finite cover of the one constructed by Italiano–Martelli–Migliorini.</p> 
+            </div>
+        <li onclick="displayabs('modp_growth')">Homological growth of Artin kernels in positive characteristic (with <a href="https://samhughesmaths.github.io/">Sam Hughes</a> and <a href="https://www.southampton.ac.uk/people/5x7v5y/professor-ian-leary">Ian J. Leary</a>), <i>submitted</i>. <a href="https://arxiv.org/abs/2212.03187">arXiv</a></li>
+            <div class="bord", id="modp_growth">
+                <p>We prove an analogue of the Lück Approximation Theorem in positive characteristic for certain residually finite rationally soluble (RFRS) groups including right-angled Artin groups and Bestvina–Brady groups. Specifically, we prove that the mod \(p\) homology growth equals the dimension of the group homology with coefficients in a certain universal division ring and this is independent of the choice of residual chain. For general RFRS groups we obtain an inequality between the invariants. We also consider a number of applications to fibring, amenable category, and minimal volume entropy.</p> 
+            </div>
+        <li onclick="displayabs('div_rings')">Division rings for group algebras of virtually compact special groups (with <a href="https://sites.google.com/view/pablosanchez-peralta/"> Pablo Sánchez-Peralta</a>). <a href="https://arxiv.org/abs/2303.08165">arXiv</a></li>
+            <div class="bord", id="div_rings">
+                <p>Let \(k*G\) be a crossed product of a division ring \(k\) and a torsion-free virtually compact special group \(G\). We embed \(k∗G\) into a division ring \(\mathcal D\) and use this to confirm a recent conjecture of Kielak and Linton. In the case where \(G\) is locally indicable, we prove that \(\mathcal D\) is Hughes-free.</p> 
+                <p>If \(H\) is a torsion-free one-relator group, let \(\overline{kH}\) be the division ring containing \(kH\) constructed by Lewin and Lewin. We prove that \(kH\) is Hughes-free whenever a Hughes-free \(kH\)-division ring exists. This is always the case when \(k\) is of characteristic zero; in positive characteristic, our previous result implies this happens when \(H\) is virtually compact special.</p>
+            </div>
     </ol> 
 </p>
 
