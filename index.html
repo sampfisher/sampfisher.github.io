@@ -28,15 +28,22 @@
     border: 0.8px solid black;
     padding: 3px;
     border-radius: 10px; }
-.column1 {
-  float: left;
-  width: 78%;
-  padding-left: 50px;
+/* container */
+.right-sidebar {
+    display:flex;
+    flex-wrap:wrap;
 }
-.column2 {
-  float: right;
-  width: 20%;
-  padding-right: 10px;
+.right-sidebar > * {
+    width:100%;
+    padding:1rem;
+}
+@media (min-width:950px) {
+    .right-sidebar > *:nth-child(1) {
+        width:calc(75%);
+    }
+    .right-sidebar > *:nth-child(2) {
+        width:calc(25%);
+    }
 }
 .row:after {
   content: "";
@@ -104,8 +111,8 @@ img {
     <h1>Sam Fisher</h1>
 </center>
 
-<div class="row">
-    <div class="column1">
+<div class="right-sidebar">
+    <div>
         <p>
             <h3>
                 About
@@ -134,8 +141,8 @@ img {
                         We show that a virtually RFRS group \(G\) of type \(\mathrm{FP}_n(\mathbb{Q})\) virtually algebraically fibres 
                         with kernel of type \(\mathrm{FP}_n(\mathbb{Q})\) if and only if the first n \(\ell^2\)-Betti numbers of \(G\) vanish, that is, 
                         \(b^{(2)}_p(G)=0\) for \(0 \leqslant p \leqslant n\). We also offer a variant of this result over other fields, 
-                        in particular in positive characteristic.<br><br>
-                        As an application of the main result, we show that virtually amenable RFRS groups of type \(\mathrm{FP}_n(\mathbb{Q})\) are polycyclic-by-finite.
+                        in particular in positive characteristic.<br>
+                        &nbsp&nbsp&nbsp As an application of the main result, we show that virtually amenable RFRS groups of type \(\mathrm{FP}_n(\mathbb{Q})\) are polycyclic-by-finite.
                         It then follows that if \(G\) is a virtually RFRS group of type \(\mathrm{FP}_n(\mathbb{Q})\) such that \(\mathbb ZG\) is Noetherian, then \(G\) 
                         is polycyclic-by-finite. This answers a longstanding conjecture of Baer for virtually RFRS groups of type \(\mathrm{FP}_n(\mathbb{Q})\).
                       </div>
@@ -168,8 +175,8 @@ img {
                         We embed the group algebra \(kG\) in a division ring and prove that the embedding is Hughes-free whenever \(G\) is locally indicable.
                         In particular, we prove that Kaplansky's zerodivisor conjecture for all group algebras of torsion-free \(3\)-manifold groups.
                         The embedding is also used to confirm a conjecture of Kielak and Linton. Thanks to the work of Jaikin-Zapirain, another consequence of the
-                        embedding is that \(kG\) is coherent wehenver \(G\) is virtually compact special one-relator group. <br> <br>
-                        If \(G\) is a torsion-free one-relator group, let \(\overline{kG}\) be the division ring containing \(kG\) constructed by Lewin and Lewin. 
+                        embedding is that \(kG\) is coherent wehenver \(G\) is virtually compact special one-relator group.<br>
+                        &nbsp&nbsp&nbsp If \(G\) is a torsion-free one-relator group, let \(\overline{kG}\) be the division ring containing \(kG\) constructed by Lewin and Lewin. 
                         We prove that \(kG\) is Hughes-free whenever a Hughes-free \(kG\)-division ring exists. This is always the case when \(k\) is of characteristic
                         zero; in positive characteristic, our previous result implies this happens when \(G\) is virtually compact special.
                     </div>
@@ -198,15 +205,25 @@ img {
             <dt>Mathematical Institute</dt>
             <dt>University of Oxford</dt>
         </dl>
-        
-        
-        
-        </body>
-        </html>
     </div>
 
 
-    <div class="column2">
-        <img src="photo.png" style="float:right" width="100%" background-size="contain">
+
+
+    <div class>
+        <div class="column2">
+            <img src="photo.png" style="float:right" height="325px">
+        </div>
     </div>
-</div>
+
+
+
+
+ </div>
+
+        
+        
+        
+        
+</body>
+</html>
