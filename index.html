@@ -9,6 +9,14 @@
     <script id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
+    <script>
+        const images = ["photos/photo.png", "photos/yosemite.png"];
+
+        document.addEventListener('DOMContentLoaded', _ => {
+            const randImageIndex = ~~(Math.random() * images.length);
+            document.getElementById('randImg').src = images[randImageIndex];
+        });
+    </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 .bord {
@@ -104,31 +112,31 @@ img {
 
 </head>
 
-
 <body>
 
 <center>
     <h1>Sam Fisher</h1>
 </center>
 
-<div class="right-sidebar">
+<div class="left-sidebar">
+    <div class>
+        <div class="column2">
+            <img img id="randImg" src="" alt="Random image" style="float:right" height="250px" ALIGN="left" HSPACE="10">
+        </div>
+    </div>
     <div>
         <p>
             <h3>
                 About
             </h3>
-            I am a fourth year DPhil student at the <a href="https://www.maths.ox.ac.uk/" target="_blank">University of Oxford</a> working under the supervision of <a href="https://people.maths.ox.ac.uk/kielak/" target="_blank">Dawid Kielak</a>. I completed my undergraduate and master's degrees at <a href="https://www.mcgill.ca/mathstat/" target="_blank">McGill University</a>. My master's thesis was supervised by <a href="https://www.math.mcgill.ca/wise/" target="_blank">Dani Wise</a>.
-        </p>
-
-        <p>
-            I organise Oxford's <a href="https://www.maths.ox.ac.uk/events/list/655">Junior Topology and Group Theory Seminar</a>.
+            I am a fifth year DPhil student in mathematics at the <a href="https://www.maths.ox.ac.uk/" target="_blank">University of Oxford</a> working under the supervision of <a href="https://people.maths.ox.ac.uk/kielak/" target="_blank">Dawid Kielak</a>. I completed my undergraduate and master's degrees at <a href="https://www.mcgill.ca/mathstat/" target="_blank">McGill University</a>. My master's thesis was supervised by <a href="https://www.math.mcgill.ca/wise/" target="_blank">Dani Wise</a>. Here is a <a href="PDFs/CV.pdf">CV</a> (last updated August 2024).
         </p>
         
         <p>
             <h3>
                 Research interests
             </h3>
-            I am interested in geometric group theory and, more broadly, infinite group theory from a not necessarily geometric perspective. I like homological methods in group theory, \(\ell^2\)-invariants (and their generalisations in positive characteristic), algebraic fibring, finiteness properties of groups, and group algebras.
+            I am interested in infinite groups, which I mostly study using homological techniques. I like \(\ell^2\)-invariants (and their generalisations in positive characteristic), algebraic fibring, coherence, and residual properties of groups. I am also interested in group rings of infinite groups and producing embeddings of group rings into division rings.
         </p>
         
         <h3>
@@ -194,19 +202,18 @@ img {
         </ol>
 
         <h3>
-            Invited talks
+            Links
         </h3>
         <ul>
-            <li>"Virtual fibering of manifolds and groups," Glasgow Geometry and Topology Seminar (March 2024)</li>
-            <li>"Kaplansky's zero divisor conjecture via embeddings into division rings," Southampton Pure Mathematics Colloquium (March 2024)</li>
-            <li>"Algebraic fibring and \(L^2\)-Betti numbers," McGill Geometric Group Theory Seminar (March 2023)</li>
-            <li>"Homology gradients of Bestvina–Brady groups," Cambridge Junior Geometry Seminar (February 2023)</li>
-            <li>"Analogues of \(\ell^2\)-Betti numbers in positive characteristic and homology growth," ICMAT Group Theory Seminar (January 2023)</li>
-            <li>"\(\ell^2\)-Betti numbers and algebraic fibring," ICMAT Group Theory Seminar (January 2023)</li>
-            <li>"Agrarian invariants and a positive characteristic version of Lück's approximation conjecture," Southampton Pure Maths Lunchtime Seminar (November 2022)
-            <li>"Algebraic fibring and \(\ell^2\)-Betti numbers," KIT AG Topology Seminar (November 2022)</li>
+            <li>Oxford's <a href="https://www.maths.ox.ac.uk/events/list/655">Junior Topology and Group Theory Seminar</a>, which I organised in 2023-2024</li>
+            <li>My <a href="PDFs/masters.pdf">master's thesis</a> </li>
+            <li>Some recordings of online talks I gave:
+                <ul>
+                    <li><a href="https://www.youtube.com/watch?v=qdAtlG6HEVE"> A Short Introduction to Profinite Groups</a>, a talk I gave at the Finite and Residual Methods around GGT section (which I organised with <a href="https://samhughesmaths.github.io/" target="_blank">Sam Hughes</a> and <a href="https://www.maths.ox.ac.uk/people/pawel.piwek">Pawe&#322; Piwek</a> of the <a href="https://www.ncngt.org/topic-groups/profinite-and-residual-methods">Nearly Carbon Neutral Geometric Topology Conference</a></li>
+                    <li>My talk <a href="https://www.youtube.com/watch?v=lLhxb39eeaE">Fibring of RFRS groups</a> at the <a href="https://faculty.tcu.edu/gfriedman/GTW2022/">2022 Workshop in Geometric Topology</a> at TCU</li>
+                </ul>
+            </li>
         </ul>
-        
         
         <h3>
             Contact
@@ -218,19 +225,6 @@ img {
             <dt>University of Oxford</dt>
         </dl>
     </div>
-
-
-
-
-    <div class>
-        <div class="column2">
-            <img src="photo.png" style="float:right" height="325px">
-        </div>
-    </div>
-
-
-
-
  </div>
 
         
