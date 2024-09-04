@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    .bord {
+        display: table;
+        padding: 3px;
+        border-radius: 10px;
+        border: 0.8px solid black;
+        background-origin: border-box;
+        background-color: #fcf3cb;
+        display: none;
+    }
+    .card-body { background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    .collapsing.panel {background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    /* container */
+    .right-sidebar {
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .right-sidebar > * {
+        width:100%;
+        padding:1rem;
+    }
+    @media (min-width:950px) {
+        .right-sidebar > *:nth-child(1) {
+            width:calc(75%);
+        }
+        .right-sidebar > *:nth-child(2) {
+            width:calc(25%);
+        }
+    }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    t {
+        color: #034682;
+    }
+    t:hover {
+        color:  #a93226;
+        transition: 0.3s;
+    }
+    a:link {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:hover {
+        color:  #a93226;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
+        font-style: italic, oblique;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
+        font-weight: bold;
+        font-style: italic, oblique;
+    }
+    body {
+        background-color:#e1edff;
+        padding-right: 10%;
+        padding-left: 10%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        max-width: 800px;
+        font-family: "Computer Modern", sans-serif;
+        text-align: justify;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .topnav {
+        float: right;
+    }
+    .topnav a {
+        padding-left: 15px;
+    }
+    img {
+        padding: 0px 0px 0px 35px;
+    }
+</style>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html" class="active">Home</a>
+        <a href="math.html">Blog</a>
+    </div>
+
+    <h3>Blog</h3>
+    <h4>
+        <a href="Writing/ore_localisation.html"> Ore localisation</a> (September 3, 2024)
+    </h4>
+</body>

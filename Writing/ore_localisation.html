@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    .bord {
+        display: table;
+        padding: 3px;
+        border-radius: 10px;
+        border: 0.8px solid black;
+        background-origin: border-box;
+        background-color: #fcf3cb;
+        display: none;
+    }
+    .card-body { background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    .collapsing.panel {background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    /* container */
+    .right-sidebar {
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .right-sidebar > * {
+        width:100%;
+        padding:1rem;
+    }
+    @media (min-width:950px) {
+        .right-sidebar > *:nth-child(1) {
+            width:calc(75%);
+        }
+        .right-sidebar > *:nth-child(2) {
+            width:calc(25%);
+        }
+    }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    t {
+        color: #034682;
+    }
+    t:hover {
+        color:  #a93226;
+        transition: 0.3s;
+    }
+    a:link {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:hover {
+        color:  #a93226;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
+        font-style: italic, oblique;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
+        font-weight: bold;
+        font-style: italic, oblique;
+    }
+    body {
+        background-color:#e1edff;
+        padding-right: 10%;
+        padding-left: 10%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        max-width: 800px;
+        font-family: "Computer Modern", sans-serif;
+        text-align: justify;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    ol {list-style-type: none;}
+    li:before {content: "(" counter(section, lower-roman) ") ";}
+    li { counter-increment: section;}
+    .topnav {
+        float: right;
+    }
+    .topnav a {
+        padding-left: 15px;
+    }
+</style>
+
+<div class="topnav" id="myTopnav">
+    <a href="../index.html">Home</a>
+    <a href="../math.html">Blog</a>
+</div>
+
+<body>
+    <h2>Ore localisation</h2>
+
+    <p>
+        Ore localisation is the analogue of localisation for noncommutative rings. Unlike in the commutative case, a ring \(R\) cannot be Ore localised at any multiplicative subset \(S \subseteq R\); the multiplicative set must satisfy an additional condition called the Ore condition. If this condition is met, then we can form a new ring \(R[S^{-1}]\) called the Ore localisation of \(R\), which has many properties in common with the usual localisation of a commutative ring. Checking that the operations of addition and multiplication in \(R[S^{-1}]\) are well-defined is notoriously technical and requires a lot of care. Even the commutativity of addition is not immediate. Below (Sections 1, 2, and 3) are some notes I wrote a few years ago which attempt to cover all the details of the construction. Since then, <a href="https://kevins.science/" target="_blank">Kevin Klinge</a> has formalised Ore localisation in Lean, so we can rest assured that everything works.
+    </p>
+    <p>
+        In Section 1, I recall the localisation of commutative rings. In Section 2, Ore localisation is defined and I prove that it is well-defined and yields a new ring. Section 4 contains a discussion of when a group ring can be Ore localised.
+    </p>
+
+    <br>
+    <h4>1. Localisation of commutative rings</h4>
+
+    <p>
+        Before describing Ore localisation, we recall localisation of commutative rings. Let \(R\) be a commutative ring and let \(S \subseteq R\) be a multiplicatively closed set, i.e. \(1 \in S\) and \(s_1, s_2 \in S\) implies \(s_1s_2 \in S\). The <em>localisation of \(R\) at \(S\)</em> is the ring 
+        \[
+            R[S^{-1}] := \left\{ \frac{r}{s} \ : \ r \in R, s \in S \right\},
+        \]
+        where \(\frac{r}{s}\) denotes the equivalence class of the pair \((r,s) \in R \times S\) under the equivalence relation
+        \[
+            (r_1,s_1) \sim (r_2, s_2) \quad \Leftrightarrow \quad \exists t \in S : t(r_1 s_2 - r_2s_1) = 0.
+        \]
+    </p>
+    
+    <p>
+        <t data-toggle="collapse" data-target="#Lemma1_1" aria-expanded="false" aria-controls="Lemma1_1"><b>Lemma 1.1.</b> <i>\(\sim\) is an equivalence relation.</i></t>
+    </p>
+    <div class="collapse" id="Lemma1_1">
+        <div class="card card-body">
+            <i>Proof.</i> Reflexivity and symmetricity are immediate, so we only need to check transitivity. Let \((r_1, s_1) \sim (r_2,s_2)\) and \((r_2, s_2) \sim (r_3,s_3)\), and let \(t_1, t_2 \in S\) be such that \(t_1(r_1s_2 - r_2s_1) = t_2(r_2s_3 - r_3s_2) = 0\). Then 
+            \[\begin{align}
+                t_1t_2s_2(r_1s_3 - r_3s_1) &= t_1t_2(r_1s_2s_3 - r_3s_2s_1) \\
+                &= t_1s_1t_2(r_2s_3 - r_3s_2) \\
+                &= 0,
+            \end{align}\]
+            where we have used the commutativity of \(R\) in an essential way. Hence, \((r_1,s_1) \sim (r_3,s_3)\). <span style="float: right;">\(\square\)</span>
+        </div>
+    </div>
+
+    <p>
+        Addition and multiplication are defined in the obvious way:
+        \[
+            \frac{r_1}{s_1} + \frac{r_2}{s_2} := \frac{r_1s_2 + r_2s_1}{s_1s_2}, \qquad \frac{r_1}{s_1} \cdot \frac{r_2}{s_2} := \frac{r_1r_2}{s_1s_2}.
+        \]
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#Lemma1_2" aria-expanded="false" aria-controls="Lemma1_2"><b>Lemma 1.2.</b> <i>Addition and multiplication are well-defined.</i></t>
+    </p>
+    <div class="collapse" id="Lemma1_2">
+        <div class="card card-body">
+            <i>Proof.</i> We now show that addition and multiplication are well-defined. Let \(\frac{r_1}{s_1} = \frac{r_1'}{s_1'}\) and \(\frac{r_2}{s_2} = \frac{r_2'}{s_2'}\) and let \(t_1, t_2 \in S\) be the elements witnessing these equalities. That
+            \[
+                \frac{r_1s_2 + r_2s_1}{s_1s_2} = \frac{r_1's_2' + r_2's_1'}{s_1's_2'}
+            \]
+            follows from
+            \begin{align}
+                t_1& t_2( (r_1 s_2 + r_2 s_1) s_1' s_2' -  (r_1' s_2' + r_2' s_1')s_1 s_2 ) \\ 
+                &= t_2 s_2 s_2' \cdot t_1 (r_1 s_1' - r_1' s_1) +  t_1 s_1 s_1' \cdot t_2 (r_2 s_2' - r_2' s_2) \\
+                &= 0.
+            \end{align}
+            Similarly, that 
+            \[
+                \frac{r_1 r_2}{s_1 s_2} = \frac{r_1' r_2'}{s_1' s_2'}
+            \]
+            follows from 
+            \begin{align}
+                t_1& t_2 (r_1 r_2 s_1' s_2' - r_1' r_2' s_1 s_2) \\
+                &= t_1 t_2 (r_1 r_2 s_1' s_2' - r_1' r_2 s_1 s_2' + r_1' r_2 s_1 s_2' - r_1' r_2' s_1 s_2) \\ 
+                &= t_2 r_2 s_2' \cdot t_1 (r_1 s_1' - r_1' s_1) + t_1 r_1' s_2 \cdot t_2 (r_2 s_2' - r_2' s_2) \\
+                &= 0,
+            \end{align}
+            where we again used commutativity of \(R\) for both verifications. <span style="float: right;">\(\square\)</span>
+        </div>
+    </div>
+
+    <p>
+        Commutativity was crucial in the proofs of Lemmas 1.1 and 1.2, which makes it unclear how to generalise the concept of localisation to noncommutative rings.
+    </p>
+
+    <br>
+    <h4>2. Ore localisation</h4>
+
+    <p>
+        Let \(R\) be a (unital, associative, not necessarily commutative) ring and let \(S \subseteq R\) be a multiplicatively closed subset. Moreover, suppose that the following conditions are satisfied:
+        <ol type="i">
+            <li id="OC">\(rS \cap sR \neq \varnothing\) for all \(r \in R\) and \(s \in S\);</li>
+            <li id="ZD">for all \(r \in R, s \in S\), if \(sr = 0\), then there is some \(t \in S\) such that \(rt = 0\).</li>
+        </ol>
+        Condition <a href="#OC">(i)</a> is called the <em>right Ore condition</em>, and a set \(S\) in a ring \(R\) satisfying both <a href="#OC">(i)</a> and <a href="#ZD">(ii)</a> is called a <em>right Ore set</em>.
+    </p>
+
+    <p>
+        We define an equivalence relation \(\sim\) on \(R \times S\) by
+        \[
+            (r_1,s_1) \sim (r_2,s_2) \quad \Leftrightarrow \quad \exists \sigma, \sigma' \in R : \begin{cases} r_1\sigma = r_2\sigma' \\ s_1\sigma = s_2\sigma' \in S. \end{cases}
+        \]
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#Lemma2_1" aria-expanded="false" aria-controls="Lemma2_1"><b>Lemma 2.1.</b> <i>\(\sim\) is an equivalence relation.</i></t>
+    </p>
+    <div class="collapse" id="Lemma2_1">
+        <div class="card card-body">
+            <i>Proof.</i> It is clear that \(\sim\) is reflexive and symmetric, so we only need to check transitivity. Let \((r_1, s_1) \sim (r_2, s_2)\) and \((r_2, s_2) \sim (r_3, s_3)\), and let \(\sigma_1, \sigma_1', \sigma_2, \sigma_2' \in S\) be such that 
+            \[
+                r_1 \sigma_1 = r_2 \sigma_1', s_1 \sigma_1 = s_2 \sigma_1' \quad \textnormal{and} \quad r_2 \sigma_2 = r_3 \sigma_2', s_2 \sigma_2 = s_3 \sigma_2'.
+            \]
+            By the right Ore condition, there are \(r \in R, s \in S\) such that \(s_2 \sigma_1' r = s_2 \sigma_2 s\). Then \(s_2(\sigma_1' r - \sigma_2 s) = 0\), so by condition <a href="#ZD">(ii)</a> there is some \(t \in S\) such that \(\sigma_1' r t = \sigma_2 s t\). Therefore,
+            \begin{align*}
+                r_1 (\sigma_1 r t) = r_2 \sigma_1' r t &= r_2 \sigma_2 s t = r_3 (\sigma_2' s t) \\
+                s_1 (\sigma_1 r t) = s_2 \sigma_1' r t &= r_2 \sigma_2 s t = s_3 (\sigma_2' s t).
+            \end{align*}
+            Hence, \((r_1, s_1) \sim (r_3, s_3)\), proving that \(\sim\) is an equivalence relation. <span style="float: right;">\(\square\)</span>
+        </div>
+    </div>
+
+    <p>
+        From now on, we denote the equivalence class of \((r,s)\) by the <em>right fraction</em> \(r/s\) and the set of right fractions by \(R[S^{-1}]\) as in the commutative case. We call \(R[S^{-1}]\) the <em>right Ore localisation of \(R\) and \(S\)</em>. Our plan is to define addition and multiplication operations on \(R[S^{-1}]\) giving it the structure of a ring.
+    </p>
+
+    <p>
+        Given fractions \(r_1/s_1\) and \(r_2/s_2\), choose elements \((r,s) \in R \times S\) such that \(s_1 s = s_2 r\) and define addition by
+        \[
+            r_1/s_1 + r_2/s_2 := (r_1s + r_2r)/s_1s.
+        \]
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#Lemma2_2" aria-expanded="false" aria-controls="Lemma2_2"><b>Lemma 2.2.</b> <i>Addition is well-defined.</i></t>
+    </p>
+    <div class="collapse" id="Lemma2_2">
+        <div class="card card-body">
+            <i>Proof.</i> <t data-toggle="collapse" data-target="#Claim1" aria-expanded="false" aria-controls="Claim1"><b>Claim 1.</b> <i>The result is independent of the choices of \(r\) and \(s\).</t></i>
+            <p>
+                <div class="collapse" id="Claim1">
+                    <div class="card card-body">
+                        <i>Proof of Claim 1.</i> Suppose \(s_1s = s_2r\) and \(s_1s' = s_2r'\). By the Ore condition, there are \((\overline{r},\overline{s}) \in R \times S\) such that \(s\overline r = s' \overline s\). Then
+                        \[
+                            s_1s\overline r = s_1 s'\overline s = s_2 r' \overline s = s_2 r \overline r.
+                        \]
+                        The last equation, together with property <a href="#ZD">(ii)</a> implies that there is \(t \in S\) such that \(r' \overline s t = r \overline r t\). Hence,
+                        \[
+                            (r_1s+r_2r)\overline rt = r_1 s' \overline s t + r_2 r \overline r t = (r_1 s' + r_2 r') \overline s t
+                        \]
+                        and
+                        \[
+                            s_1 s \overline r t = s_1 s' \overline s t,
+                        \]
+                        which proves the claim. <span style="float: right;">\(\square\)</span>
+                    </div>
+                </div>
+            </p>
+
+            <p>
+                <t data-toggle="collapse" data-target="#Claim2" aria-expanded="false" aria-controls="Claim2"><b>Claim 2.</b> <i>The result is independent of the representative of the first summand.</i></t>
+                <div class="collapse" id="Claim2">
+                    <div class="card card-body">
+                        <i>Proof of Claim 2.</i>  Let \(r_1/s_1 = r_1'/s_1'\) and let \(\sigma, \sigma' \in R\) be such that 
+                        \[
+                            r_1 \sigma = r_1' \sigma', \quad s_1\sigma = s_1\sigma' \in S.
+                        \]
+                        We fix elements \(s,s' \in S\) and \(r,r' \in R\) such that
+                        \[
+                            s_1s = s_2r, \quad s_1's' = s_2r'.
+                        \]
+                        Our goal is to show that 
+                        \[
+                            (r_1s + r_2r)/s_1s = (r_1's' + r_2r')/s_1's'.
+                        \]
+                        By the Ore property, there are elements \(\overline s \in S\), \(\overline r \in R\) such that 
+                        \[
+                            s\overline r = \sigma \overline s
+                        \]
+                        and elements \(\widetilde s \in S\), \(\widetilde r \in R\) such that 
+                        \[
+                            s' \widetilde r = \sigma' \overline s \widetilde s.
+                        \]
+                        It follows that 
+                        \[
+                            s_1s\overline r \widetilde s = s_1\sigma \overline s \widetilde s = s_1'\sigma' \overline s \widetilde s = s_1's'\widetilde r \in S, \tag{1}
+                        \]
+                        which relates the denominators. We also have
+                        \[
+                            s_2r'\widetilde r = s_1's'\widetilde r = s_1'\sigma'\overline s \widetilde s = s_1 \sigma \overline s \widetilde s = s_1s\overline r \widetilde s = s_2 r \overline r \widetilde s,
+                        \]
+                        so property <a href="#ZD">(ii)</a> implies there is a \(t \in S\) such that \(r'\widetilde r t = r \overline r \widetilde s t\). Hence,
+                        \begin{align}
+                            (r_1s + r_2r)\overline r \widetilde s t &= r_1s\overline r \widetilde s t + r_2r\overline r \widetilde s t \\
+                            &= r_1\sigma \overline s \widetilde s t + r_2 r' \widetilde r t \\
+                            &= r_1'\sigma'\overline s \widetilde s t + r_2 r' \widetilde r t \\
+                            &= (r_1's' + r_2 r') \widetilde r t, \tag{2}
+                        \end{align}
+                        which relates the numerators. From equation (1), we also have
+                        \[
+                            (s_1s) \overline r \widetilde s t = (s_1's') \overline r t,
+                        \]
+                        which concludes the proof of the claim. <span style="float: right;">\(\square\)</span>
+                    </div>
+                </div>
+            </p>
+
+            <p>
+                <t data-toggle="collapse" data-target="#Claim3" aria-expanded="false" aria-controls="Claim3"><b>Claim 3.</b> <i>The result is independent of the order of summation, and therefore is independent of the representative of the second summand.</i></t>
+                <div class="collapse" id="Claim3">
+                    <div class="card card-body">
+                        <i>Proof of Claim 3.</i> Let \(s,\overline s \in S\), \(r, \overline r \in R\) be elements such that \(s_1s = s_2r\) and \(s_1\overline r = s_2\overline s\). Our goal is to show that 
+                        \[
+                            (r_1s + r_2r)/s_1s = (r_2\overline s + r_1\overline r)/s_2\overline s.
+                        \] 
+                        Let \(\widetilde s \in S\), \(\widetilde r \in R\) be elements such that \(r \widetilde s = \overline s \widetilde r\). Then
+                        \[
+                            s_1 s \widetilde s = s_2 r \widetilde s = s_2 \overline s \widetilde r,
+                        \]
+                        so the denominators have a common right multiple. Note that
+                        \[
+                            s_1 \overline r \widetilde r = s_2 \overline s \widetilde r = s_2 r \widetilde s = s_1 s \widetilde s,
+                        \]
+                        which implies that there is an elements \(t \in S\) such that \(\overline r \widetilde r t = s \widetilde s t\). Hence,
+                        \[
+                            (r_1s + r_2r)\widetilde s t = (r_1 \overline r + r_2 \overline s) \widetilde r t,
+                        \]
+                        which conclude the proof. <span style="float: right;">\(\square\)</span>
+                    </div>
+                </div>
+            </p>
+            Claims 1, 2, 3 clearly imply the result. <span style="float: right;">\(\square\)</span> 
+        </div>
+    </div>
+
+    <p>
+        We now want to multiply the right fractions \(r_1/s_1\) and \(r_2/s_2\). By property <a href="#OC">(i)</a>, there are \(r \in R, s \in S\) such that \(s_1 r = r_2 s\); these will be fixed for the rest of this note. We then define
+        \[
+            (r_1/ s_1) \cdot (r_2/ s_2) := (r_1 r)/ (s_2 s).
+        \]
+        We can remember this formula by thinking of it as \(r_1 s_1^{-1} r_2 s_2^{-1}\) and rewriting \(s_1 r = r_2 s\) as \(r s^{-1} = s_1^{-1} r_2\). Then \(r_1 s_1^{-1} r_2 s_2^{-1}\) becomes \(r_1 r s^{-1} s_2^{-1} = r_1 r(s_2 s)^{-1}\). This is of course informal, since the elements of \(S\) are generally not invertible in \(R\).
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#Lemma2_3" aria-expanded="false" aria-controls="Lemma2_3"><b>Lemma 2.3.</b> <i>Multiplication is well-defined.</t></i>
+    </p>
+    <div class="collapse" id="Lemma2_3">
+        <div class="card card-body">
+            <i>Proof.</i> <t data-toggle="collapse" data-target="#Claim2_3_1" aria-expanded="false" aria-controls="Claim2_3_1"><b>Claim 1.</b> <i>The result is independent of the choices of \(r\) and \(s\).</i></t>
+            <p>
+                <div class="collapse" id="Claim2_3_1">
+                    <div class="card card-body">
+                        <i>Proof of Claim 1.</i> Let \(s_1 r' = r_2 s'\). Our goal is then to show that \(r_1 r/ s_2 s = r_1 r'/s_2 s'\). Let \(\tilde{r} \in R, \tilde{s} \in S\) be such that \(s \tilde{s} = s' \tilde{r}\). We then have \(s_1 r \tilde{s} = r_2 s \tilde{s} = r_2 s' \tilde{r} = s_1 r' \tilde{r}\). By property <a href="#ZD">(ii)</a>, there is some \(t \in S\) such that \(r \tilde{s} t = r' \tilde{r} t\), which implies that \(r_1 r \cdot \tilde{s} t = r_1 r' \cdot \tilde{r} t\). Moreover, \(s_2 s \cdot \tilde{s} t = s_2 s' \cdot \tilde{r} t\), which proves the claim. <span style="float: right;">\(\square\)</span>
+                    </div>
+                </div>
+            </p>
+            <t data-toggle="collapse" data-target="#Claim2_3_2" aria-expanded="false" aria-controls="Claim2_3_2"><b>Claim 2.</b> <i>The result is independent of the first factor.</i></t>
+            <p>
+                <div class="collapse" id="Claim2_3_2">
+                    <div class="card card-body">
+                        <i>Proof of Claim 2.</i> Let \(r_1/s_1 = r_1'/s_1'\). By <a href="#OC">(i)</a> we can multiply the numerators and denominators on the right to obtain equivalent right fraction with equal denominators. Thus, we will assume that \(r_1' = r_1 \sigma\) and \(s_1' = s_1 \sigma\) for some \(\sigma \in R\). We have \(r' \in R, s' \in S\) such that \(s_1 \sigma r' = r_2 s'\), and \(\tilde{r} \in R, \tilde{s} \in S\) such that \(s \tilde{s} = s' \tilde{r}\). Hence, we have \(s_1 \sigma r' \tilde{r} = r_2 s' \tilde{r} = r_2 s \tilde{s} = s_1 r \tilde{s}\). By property <a href="#ZD">(ii)</a>, there is a \(t \in S\) such that \(\sigma r' \tilde{r} t = r \tilde{s} t\). Hence, \(r_1 r \cdot \tilde{s} t = r_1 \sigma r' \tilde{r} t = r_1' r' \cdot \tilde{r} t\). Moreover, \(s_2 s \cdot \tilde{s} t = s_2 s' \cdot \tilde{r} t\). Therefore, \(r_1 r/s_2 s = r_1' r'/s_2 s'\), as desired. <span style="float: right;">\(\square\)</span>
+                    </div>
+                </div>
+            </p>
+            <t data-toggle="collapse" data-target="#Claim2_3_3" aria-expanded="false" aria-controls="Claim2_3_3"><b>Claim 3.</b> <i>The result is independent of the second factor.</i></t>
+            <p>
+                <div class="collapse" id="Claim2_3_3">
+                    <div class="card card-body">
+                        <i>Proof of Claim 3.</i> Again, it suffices to replace \(r_2/s_2\) with \(r_2 \sigma / s_2 \sigma\) for any \(\sigma \in R\) such that \(s_2 \sigma \in S\) by the argument at the beginning of the proof of Claim 2. Let \(r' \in R, s' \in S\) be such that \(s_1 r' = r_2 \sigma s'\), and let \(\tilde{r} \in R, \tilde{s} \in S\) be such that \(s \tilde{r} = \sigma s' \tilde{s}\). Then \(s_1 r' \tilde{s} = r_2 \sigma s' \tilde{s} = r_2 s \tilde{r} = s_1 r \tilde{r}\), so there is a \(t \in S\) such that \(r' \tilde{s} t = r \tilde{r} t\). Hence, \(r_1 r' \cdot \tilde{s} t = r_1 r \cdot \tilde{r} t\). Moreover, \(s_2 \sigma s' \cdot \tilde{s} t = s_2 s \cdot \tilde{r} t\). Therefore, \(r_1 r/s_2 s = r_1 r'/s_2 \sigma s\)$, as desired. <span style="float: right;">\(\square\)</span>
+                    </div>
+                </div>
+            </p>
+            The result follows immediately from Claims 1, 2, and 3. <span style="float: right;">\(\square\)</span>
+        </div>
+    </div>
+
+    <p>
+        Now that we know that addition and multiplication are well-defined, we check that they define a ring structure on \(R[S^{-1}]\).
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#Lemma2_4" aria-expanded="false" aria-controls="Lemma2_4"><b>Lemma 2.4.</b> <i>Addition and multiplication define a ring structure on \(R[S^{-1}]\).</em></i></t>
+    </p>
+
+    <div class="collapse" id="Lemma2_4">
+        <div class="card card-body">
+            <p><i>Proof.</i> That addition is commutative was proven in Claim 3 of <t data-toggle="collapse" data-target="#Lemma2_2" aria-expanded="false" aria-controls="Lemma2_2">Lemma 2.2</t>. It is also easy to see that addition is associative: given right fractions \(r_1/s_1\), \(r_2/s_2\), and \(r_3/s_3\), we may assume that \(s_1 = s_2 = s_3\) by choosing new representatives using the Ore property. Then
+            \begin{align}
+                (r_1/s_1 + r_2/s_2) + r_3/s_3 &= r_1/s_1 + (r_2/s_2 + r_3/s_3) \\
+                &= (r_1+r_2+r_3)/s
+            \end{align}
+            by the definition of addition and associativity of addition in \(R\).</p>
+            
+            <t data-toggle="collapse" data-target="#Claim2_4_1" aria-expanded="false" aria-controls="Claim2_4_1"><b>Claim 1.</b> <i>Multiplication is associative.</i></t>
+            <p>
+                <div class="collapse" id="Claim2_4_1">
+                    <div class="card card-body">
+                        <i>Proof of Claim 1.</i> Let \(r_1/s_1, r_2/s_2, r_3/s_3 \in R[S^{-1}]\). First consider the product \(((r_1/s_1)(r_2/s_2)) (r_3/s_3)\) and let \(\rho_1 \in R\), \(\sigma_1 \in S\) be such that \(s_1 \rho_1 = r_2 \sigma_1\). Then \((r_1/s_1)(r_2/s_2) = (r_1 \rho_1)/(s_2 \sigma_1)\). Now let \(\rho_2 \in R, \sigma_2 \in S\) be such that \(s_2 \sigma_1 \rho_2 = r_3 \sigma_2\). Then
+                        \[
+                            ((r_1/s_1)(r_2/s_2)) (r_3/s_3) = (r_1 \rho_1 \rho_2)/(s_3 \sigma_2).
+                        \]
+                        On the other hand,
+                        \begin{align}
+                            (r_1/s_1)((r_2/s_2) (r_3/s_3)) &= (r_1/s_1) ((r_2 \sigma_1 \rho_2)/(s_3 \sigma_2)) \\
+                            &= (r_1 \rho_1 \rho_2)/(s_3 \sigma_2)
+                        \end{align}
+                        by the fact that multiplication is independent of all choices made using condition <a href="#OC">(i)</a>. <span style="float: right;">\(\square\)</span>
+                    </div>
+                </div>
+            </p>
+            <p>
+                It is obvious that \(1/1\) is the multiplicative unit, so the only thing left to prove is distributivity.
+            </p>
+
+            <t data-toggle="collapse" data-target="#Claim2_4_2" aria-expanded="false" aria-controls="Claim2_4_2"><b>Claim 2.</b> <i>Multiplication distributes over addition.</i></t>
+            <p>
+                <div class="collapse" id="Claim2_4_2">
+                    <div class="card card-body">
+                        <i>Proof of Claim 1.</i> Consider the expression \(((r_1+r_2)/s_0)(r/s)\). Let \(\tilde{r} \in R, \tilde{s} \in S\) be such that \(s_0 \tilde{r} = r \tilde{s}\). Then
+                        \begin{align}
+                            ((r_1+r_2)/s_0)(r/s) &= (r_1+r_2)\tilde{r}/s\tilde{s} \\
+                                &= r_1\tilde{r}/s\tilde{s} + r_2\tilde{r}/s\tilde{s} \\
+                                &= (r_1/s_0)(r/s) + (r_2/s_0)(r/s).
+                        \end{align}
+                        When multiplying on the right, distributivity does not come as easy. First note that \((a/1)/(b/c) = ab/c\), which implies that
+                        \begin{align}
+                            (r/1)((r_1+r_2)/s) &= r(r_1+r_2)/s \\
+                            &= rr_1/s + rr_2/s \\
+                            &= (r/1)(r_1/s) + (r/1)(r_2/s),
+                        \end{align}
+                        so we have established left distributivity for elements of the form \(r/1\). Using that \((s/1)(1/s) = 1/1\), we have
+                        \begin{align*}
+                            (1/s)&(r_1/1) + (1/s)(r_2/1) \\
+                            &= (1/s)(s/1)((1/s)(r_1/1) + (1/s)(r_2/1)) (s/1) (1/s) \\
+                            &= (1/s)(r_1/1 + r_2/1)(s/1)(1/s) = (1/s)(r_1/1 + r_2/1),
+                        \end{align*}
+                        where we have used the fact that \(s/1\) distributes over \((1/s)(r_1/1) + (1/s)(r_2/1)\). We have thus established left distributivity for elements of the form \(1/s\). Since multiplication is associative and \((r/1)(1/s) = r/s\), this proves left distributivity. <span style="float: right;">\(\square\)</span>
+                    </div>
+                </div>
+            </p>
+            Thus, \(R[S^{-1}]\) is a ring. <span style="float: right;">\(\square\)</span>
+        </div>
+    </div>
+
+    <br>
+    <h4>3. Properties of Ore localisation</h4>
+
+    <p>
+        We continue with the notation from the previous section: \(R\) is a ring and \(S \subseteq R\) satisfies the right Ore condition. The properties presented in this section should convince the reader that Ore localisation is the correct analogue of localisation for noncommutative rings.
+    </p>
+    <p>
+        <t data-toggle="collapse" data-target="#Lemma3_1" aria-expanded="false" aria-controls="Lemma3_1"><b>Lemma 3.1.</b> <i>The map \(r \mapsto r/1\) defines a natural ring homomorphism \(\iota \colon R \rightarrow R[S^{-1}]\), which is injective if and only if there are no right zero divisors in \(S\).</i></t>
+    </p>
+    <div class="collapse" id="Lemma3_1">
+        <div class="card card-body">
+            <i>Proof.</i> It follows directly from the definitions that \(\iota\) is a ring homomorphism. Then \(\iota(r) = r/1 = 0/1\) if and only if there are elements \(\sigma, \sigma' \in R\) such that \(r\sigma = 0\) and \(1\sigma = 1\sigma' \in S\), which in turn is equivalent to the existence of a right zero divisor in \(S\). <span style="float: right;">\(\square\)</span>
+        </div>
+    </div>
+    <p>
+        From now one, we restrict ourselves to the case where \(S\) has no right zero divisors. The right Ore localisation of a ring is a universal object in the same way that the usual localisation of a commutative ring is.
+    </p>
+    <p>
+        <t data-toggle="collapse" data-target="#Lemma3_2" aria-expanded="false" aria-controls="Lemma3_2"><b>Lemma 3.2.</b> <i>If \(f \colon R \rightarrow Q\) is a ring homomorphism such that \(f(s)\) is a unit in \(Q\) for every \(s \in S\), then there is a unique ring homomorphism \(\overline{f} \colon R[S^{-1}] \rightarrow Q\) such that \(\overline f \circ \iota = f\).
+        </i></t>
+    </p>
+    <div class="collapse" id="Lemma3_2">
+        <div class="card card-body">
+            <i>Proof.</i> We put \(\overline f(r/s) = f(r)f(s)^{-1}\), and it is clear that this does not depend on the choice of representative. It is also clear that \(\overline f\) is additive on right fractions with a common denominator. But all fractions can be put over a common denominator by the Ore condition, so \(\overline f\) respects addition. For multiplication, let \(r_1/s_1\) and \(r_2/s_2\) be right fraction and suppose that \(s_1r = r_2s\). Then
+            \begin{align}
+                \overline f (r_1/s_1 \cdot r_2/s_2) &= \overline f(r_1 r/ ss_2) \\
+                &= f(r_1)f(rs^{-1})f(s_2^{-1}) \\
+                &= f(r_1)f(s_1^{-1}r_2)f(s_2^{-1}) \\
+                &= \overline f(r_1/s_1) \overline f(r_2 /s_2)
+            \end{align}
+            so \(f\) respects multiplication and therefore is a ring homomorphism. <span style="float: right;">\(\square\)</span>
+        </div>
+    </div>
+    <p>
+        It is not true, however, that Ore localisation is completely characterised by the above property. There are examples of pairs \(S \subseteq R\) such that \(S\) is a <em>left</em> Ore set, but not a right Ore set. The left Ore localisation will satisfy the same property, but will not be a right Ore localisation.
+    </p>
+    <p>
+        The final property we will discuss is flatness. Recall that an \(R\)-algebra \(R \rightarrow T\) is flat if and only if the functor \(- \otimes_R T\) preserves injections of right \(R\)-modules.
+    </p>
+    <p>
+        <t data-toggle="collapse" data-target="#Lemma3_3" aria-expanded="false" aria-controls="Lemma3_3"><b>Lemma 3.3.</b> <i>\(\iota \colon R \rightarrow R[S^{-1}]\) is flat.</i></t>
+    </p>
+    <div class="collapse" id="Lemma3_3">
+        <div class="card card-body">
+            <p><i>Proof (sketch).</i> Given a right \(R\)-module \(M\), we define the <em>right Ore localisation</em> of \(M\) at \(S\) to be the right \(R[S^{-1}]\)-module of fractions \(m/s\), where \(m \in M\) and \(s \in S\). It is denoted by \(M[S^{-1}]\). Two right fractions \(m/s\) and \(m'/s'\) are equal if and only if there are elements \(\sigma, \sigma' \in R\) such that \(m\sigma = m'\sigma'\) and \(s\sigma = s'\sigma' \in S\). We leave it to the reader to define the operations of addition and scalar multiplication. Checking that everything is well-defined is as long and tedious as it was to check that the operations on \(R[S^{-1}]\) are well-defined, but the proofs are nearly identical.</p>
+
+            <p>
+                Note that \(m/1 = 0\) if and only if there is an element \(s \in S\) such that \(ms = 0\). Moreover, there is a map \(M \otimes_R R[S^{-1}] \rightarrow M[S^{-1}]\) by the universal property of the tensor product. Thus, if \(m \otimes 1 = 0\) in the tensor product, then there must be \(\sigma \in S\) such that \(m\sigma = 0\).
+            </p>
+            <p>
+                We are now ready to prove flatness. Let \(i\colon N \rightarrow M\) be an injection of right \(R\)-modules and suppose \(x \in \ker(N \otimes_R R[S^{-1}] \rightarrow M \otimes_R R[S^{-1}])\). By the Ore condition, every element of  \(N \otimes_R R[S^{-1}]\) can be expressed as an elementary tensor, so we let \(x = n \otimes 1/s\). Then \(i(x) \otimes 1/s = 0\), which implies that \(i(x) \otimes 1 = 0\). Then there is some \(\sigma \in S\) such that \(i(n)s = 0\), and therefore \(ns = 0\), since \(i\) is injective. Then \(n \otimes 1 = ns \otimes 1/s = 0\), so \(x = 0\), which concludes the proof. <span style="float: right;">\(\square\)</span>
+            </p>
+            </span>
+        </div>
+    </div>
+
+    <br>
+    <h4>4. Group rings that are Ore domains</h4>
+
+    <p>
+        A ring \(R\) is a <em>right Ore domain</em> if it is a domain (i.e. it has no nontrivial zero divisors) and \(R \smallsetminus \{0\}\) is a right Ore set. Note that if \(R\) is a right Ore domain, then it <em>embeds</em> into its Ore localisation, which is a division ring. In this section we will be interested in groups rings that are Ore domains. Such group rings will thus satisfy a strong form of Kaplansky's Zero Divisor Conjecture, which predicts that group algebras of torsion-free groups are domains. So an obvious necessary condition for \(kG\) to be an Ore domain is that \(G\) be torsion-free.
+    </p>
+    <p>    
+        It is an easy exercise to show that a group ring is a right Ore domain if and only if it is a left Ore domain, so from now on we will drop the left/right specification. Let \(kG\) be the group ring of a group \(G\) and a field \(k\). An immediate observation is that \(kG\) is an Ore domain whenever \(G\) is a torsion-free Abelian group. Indeed, in this case it is easy to see that \(kG\) is a domain, and therefore the usual field of fractions of \(kG\) is its Ore localisation.
+    </p>
+    <p>
+        It is also not hard to see that Noetherian domains are Ore domains. Indeed, suppose that \(sR \cap rS = \varnothing\). We claim that the set \(\{s^i r : i \geqslant 0\}\) is right linearly independent over \(R\). Indeed, assume that
+        \[
+            r \alpha_0 + sr \alpha_1 + \dots + s^nr \alpha_n = 0.
+        \]
+        If \(\alpha_0 \neq 0\), then \(r \alpha_0 \in sR \cap rS\), a contradiction. After cancelling a power of \(s\), we are left with 
+        \[
+            r \alpha_1 + \dots + s^{n-1}r \alpha_n = 0.
+        \]
+        Continuing like this, we find that \(\alpha_i = 0\) for all \(i = 0, \dots, n\). Hall proved that <a href="https://londmathsoc.onlinelibrary.wiley.com/doi/abs/10.1112/plms/s3-4.1.419" target="_blank">\(kG\) is Noetherian whenever \(G\) is poly-\(\mathbb{Z}\)</a> (i.e. it admits a subnormal series with infinite cyclic quotients). Moreover, poly-\(\mathbb{Z}\) groups are locally indicable and therefore their group algebras are domains, so it follows that \(kG\) is an Ore domain whenever \(G\) is poly-\(\mathbb{Z}\). In particular, if \(G\) is a torsion-free nilpotent group, then \(kG\) is an Ore domain. This is because finitely generated torsion-free nilpotent groups are poly-\(\mathbb Z\), and \(kG\) is an Ore domain if and only if \(kH\) is an Ore domain for all finitely generated subgroups \(H \leqslant G\).
+    </p>
+    <p>
+        However, not all group algebras of torsion-free groups can be Ore domains. For example, let \(F_2\) be the free group on the generators \(a\) and \(b\). By examining the standard classifying space of \(F_2\), we see that there is a free resolution
+        \[
+            0 \rightarrow (a-1)kF_2 \oplus (b-1)kF_2 \rightarrow kF \rightarrow k \rightarrow 0.
+        \]
+        This shows that \((a-1)kF_2 \cap (b-1)kF_2 = \{0\}\), and therefore \(kF_2\) cannot be an Ore domain. Thus, any group containing a free subgroup cannot be an Ore domain. It is interesting to note, however, that \(kF_2\) can still be embedded into a division ring. For example, \(F_2\) is a biorderable group, and therefore \(kF_2\) embeds into the <em>Mal'cev–Neumann power series ring</em>. This is a division ring whose elements are formal power series of elements in \(F_2\) with well-ordered support. This division ring also coincides with the <em></em>Cohn localisation of \(kF_2\)  (we will not define this here).
+    </p>
+    <p>
+        The remarks of the previous paragraph severely limit the non-amenable groups which can have Ore domain group algebras. As we shall now see, it is essentially only amenable groups that can have Ore group algebras. The following trick of Dov Tamari shows that amenable groups (satisfying the Zero Divisor Conjecture) have Ore domain group algebras.
+    </p>
+    <p>
+        <t data-toggle="collapse" data-target="#Theorem4_1" aria-expanded="false" aria-controls="Theorem4_1"><b>Theorem 4.1</b> (Tamari, 1949)<b>.</b> <i>Let \(G\) be amenable and suppose that \(kG\) has no nontrivial zero divisors. Then \(kG\) is an Ore domain.</i></t>
+    </p>
+    <div class="collapse" id="Theorem4_1">
+        <div class="card card-body">
+            <i>Proof.</i> Let \(r,s \in kG \smallsetminus \{0\}\). We will show that \(r\) and \(s\) have a common nonzero multiple, and therefore that \(kG \smallsetminus \{0\}\) satisfies the Ore condition. Let \(S \subseteq G\) be the union of the supports of \(r\) and \(s\). By the Følner condition, there is a finite set \(F\) such that \(|SF| < 2|F|\). Now let \(r',s' \in kG\) be elements with support equal to \(F\) and view their coefficients in \(k\) as variables. The relation \(rs' = sr'\) imposes at most \(|SF|\) linear equations over \(k\), but there are \(|F|\) variables, so there must be a nontrivial solution. <span style="float: right;">\(\square\)</span>
+        </div>
+    </div>
+    <p>
+        The converse to this result was recently established by Bartholdi and Kielak, in <a href="https://ems.press/journals/jems/articles/16307" target="_blank">this article</a>.
+    </p>
+    <p>
+        <t data-toggle="collapse" data-target="#Theorem4_2" aria-expanded="false" aria-controls="Theorem4_2"><b>Theorem 4.2</b> (Bartoldi–Kielak, 2019)<b>.</b> <i>If \(kG\) is an Ore domain, then \(G\) is amenable.</i></t>
+    </p>
+    <div class="collapse" id="Theorem4_2">
+        <div class="card card-body">
+            <i>Proof (sketch).</i> Bartholdi shows that if \(G\) is nonamenable, then there is an injective map \(kG^n \hookrightarrow kG^m\) for some integers \(n > m\). Let \(\mathcal D\) denote the Ore localisation of \(kG\) at the set of nonzero elements. Since Ore localisation is flat (see Lemma 3.3), applying the functor \(- \otimes_{kG} \mathcal D\) yields an injection \(\mathcal D^n \hookrightarrow \mathcal D^m\), which is impossible (for the same reason that a vector space cannot embed into another vector space of smaller dimension). <span style="float: right;">\(\square\)</span>
+        </div>
+    </div>
+    <p>
+        These results make the following special case of Kaplansky's Zero Divisor Conjecture particularly interesting.
+    </p>
+    <p>
+        <b>Conjecture 4.3.</b> <i>If \(G\) is a torsion-free amenable group and \(k\) is a field, then \(kG\) is a domain.</i>
+    </p>
+    <p>
+        We conclude with the following result, which shows, in particular, that the Zero Divisor Conjecture is known for a large class of amenable groups. The class of <em>elementary amenable</em> groups is the smallest class of groups containing all finite groups, all Abelian groups, and is closed under taking subgroups, quotients, extensions, and directed unions.
+    </p>
+    <p>
+        <b>Theorem 4.4</b> (<a href="https://www.jstor.org/stable/2046771" target="_blank">Kropholler–Linnell–Moody, 1988</a>)<b>.</b> <i>If \(G\) is torsion-free elementary amenable and \(k\) is a field, then \(kG\) is an Ore domain.</i>
+    </p>
+
+</body>

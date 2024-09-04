@@ -11,101 +11,109 @@
     </script>
     <script>
         const images = ["photos/photo.png", "photos/yosemite.png"];
-
         document.addEventListener('DOMContentLoaded', _ => {
             const randImageIndex = ~~(Math.random() * images.length);
             document.getElementById('randImg').src = images[randImageIndex];
         });
     </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
-.bord {
-  display: table;
-  padding: 3px;
-  border-radius: 10px;
-  border: 0.8px solid black;
-  background-origin: border-box;
-  background-color: #fcf3cb;
-  display: none;
-}
-.card-body { background-color: #fcf3cb;
-    border: 0.8px solid black;
-    padding: 3px;
-    border-radius: 10px; }
-.collapsing.panel {background-color: #fcf3cb;
-    border: 0.8px solid black;
-    padding: 3px;
-    border-radius: 10px; }
-/* container */
-.right-sidebar {
-    display:flex;
-    flex-wrap:wrap;
-}
-.right-sidebar > * {
-    width:100%;
-    padding:1rem;
-}
-@media (min-width:950px) {
-    .right-sidebar > *:nth-child(1) {
-        width:calc(75%);
+    .bord {
+        display: table;
+        padding: 3px;
+        border-radius: 10px;
+        border: 0.8px solid black;
+        background-origin: border-box;
+        background-color: #fcf3cb;
+        display: none;
     }
-    .right-sidebar > *:nth-child(2) {
-        width:calc(25%);
+    .card-body { background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
     }
-}
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-t {
-  color: #034682;
-}
-t:hover {
-  color:  #a93226;
-  transition: 0.3s;
-}
-a:link {
-  color: #034682;
-  text-decoration: none;
-}
-a:visited {
-  color: #034682;
-  text-decoration: none;
-}
-a:hover {
-  color:  #a93226;
-  transition: 0.3s;
-  text-decoration: none;
-}
-@font-face {
-    font-family: "Computer Modern";
-    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
-  }
-@font-face {
-    font-family: "Computer Modern";
-    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
-    font-weight: bold;
-  }
-@font-face {
-    font-family: "Computer Modern";
-    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
-    font-style: italic, oblique;
-  }
-@font-face {
-    font-family: "Computer Modern";
-    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
-    font-weight: bold;
-    font-style: italic, oblique;
-  }
-body {
-    background-color:#e1edff;
-    padding: 35px 35px 35px 35px;
-    font-family: "Computer Modern", sans-serif;
-}
-img {
-    padding: 0px 0px 0px 35px;
-}
+    .collapsing.panel {background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    /* container */
+    .right-sidebar {
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .right-sidebar > * {
+        width:100%;
+        padding:1rem;
+    }
+    @media (min-width:950px) {
+        .right-sidebar > *:nth-child(1) {
+            width:calc(75%);
+        }
+        .right-sidebar > *:nth-child(2) {
+            width:calc(25%);
+        }
+    }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    t {
+        color: #034682;
+    }
+    t:hover {
+        color:  #a93226;
+        transition: 0.3s;
+    }
+    a:link {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:hover {
+        color:  #a93226;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
+        font-style: italic, oblique;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
+        font-weight: bold;
+        font-style: italic, oblique;
+    }
+    body {
+        background-color:#e1edff;
+        padding: 35px 35px 35px 35px;
+        font-family: "Computer Modern", sans-serif;
+    }
+    img {
+        padding: 0px 0px 0px 35px;
+    }
+    .topnav {
+        float: right;
+    }
+    .topnav a {
+        padding-left: 15px;
+    }
 </style>
 
 <title>Sam Fisher</title>
@@ -113,123 +121,122 @@ img {
 </head>
 
 <body>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html" class="active">Home</a>
+        <a href="math.html">Blog</a>
+    </div>
 
-<center>
-    <h1>Sam Fisher</h1>
-</center>
+    <center>
+        <h1>Sam Fisher</h1>
+    </center>
 
-<div class="left-sidebar">
-    <div class>
-        <div class="column2">
-            <img img id="randImg" src="" alt="Random image" style="float:right" height="250px" ALIGN="left" HSPACE="10">
+    <div class="left-sidebar">
+        <div class>
+            <div class="column2">
+                <img img id="randImg" src="" alt="Random image" style="float:right" height="250px" ALIGN="left" HSPACE="10">
+            </div>
+        </div>
+        <div>
+            <p>
+                <h3>
+                    About
+                </h3>
+                I am a fifth year DPhil student in mathematics at the <a href="https://www.maths.ox.ac.uk/" target="_blank">University of Oxford</a> working under the supervision of <a href="https://people.maths.ox.ac.uk/kielak/" target="_blank">Dawid Kielak</a>. I completed my undergraduate and master's degrees at <a href="https://www.mcgill.ca/mathstat/" target="_blank">McGill University</a>. My master's thesis was supervised by <a href="https://www.math.mcgill.ca/wise/" target="_blank">Dani Wise</a>. Here is a <a href="PDFs/CV.pdf">CV</a> (last updated August 2024).
+            </p>
+            
+            <p>
+                <h3>
+                    Research interests
+                </h3>
+                I am interested in infinite groups, which I mostly study using homological techniques. I like \(\ell^2\)-invariants (and their generalisations in positive characteristic), algebraic fibring, coherence, and residual properties of groups. I am also interested in group rings of infinite groups and producing embeddings of group rings into division rings.
+            </p>
+            
+            <h3>
+                Preprints and publications
+            </h3>
+            <ol reversed>
+                <li>
+                    <t data-toggle="collapse" data-target="#vfbyz" aria-expanded="false" aria-controls="vfbyz">On the cohomological dimension of kernels of maps to \(\mathbb Z\)</t> (2024).
+                    <a href="https://arxiv.org/abs/2403.18758" target="_blank">arXiv</a>
+                </li>
+                <div class="collapse" id="vfbyz">
+                    <div class="card card-body">
+                        We prove that if \(G\) is a finitely generated RFRS group of cohomological dimension \(2\), then \(G\) is virtually free-by-cyclic if and only if \(b_2^{(2)}(G) = 0\). This answers a question of Wise and generalises and gives a new proof of a recent theorem of Kielak and Linton, where the same result is obtained under the additional hypotheses that \(G\) is virtually compact special and hyperbolic. More generally, we show that if \(G\) is a RFRS group of cohomological dimension \(n\) and of type \(\mathrm{FP}_{n-1}\), then \(G\) admits a virtual map to \(\mathbb Z\) with kernel of rational cohomological dimension \(n-1\) if and only if \(b_n^{(2)}(G) = 0\).
+                    </div>
+                </div>
+                    
+                <li> 
+                    <t data-toggle="collapse" data-target="#L2Hall" aria-expanded="false" aria-controls="L2Hall">The Hanna Neumann Conjecture for graphs of free groups with cyclic edge groups</t> (2023). Joint with <a href="https://www.maths.ox.ac.uk/people/ismael.morales" target="_blank"> Ismael Morales</a>.
+                    <i>Submitted</i>. <a href="https://arxiv.org/abs/2311.12910" target="_blank">arXiv</a>
+                </li>
+                <div class="collapse" id="L2Hall">
+                    <div class="card card-body">
+                        The Hanna Neumann Conjecture (HNC) for a free group \(G\) predicts that \(\overline\chi(U\cap V)\leq \overline\chi (U)\overline\chi(V)\) for all finitely generated subgroups \(U\) and \(V\), where \(\overline\chi(H) = \min\{-\chi(H),0\}\) denotes the <em>reduced Euler characteristic</em> of \(H\). A strengthened version of the HNCwas proved independently by Friedman and Mineyev in 2011. Recently, Antol\'in and Jaikin-Zapirain introduced the \(L^2\)-Hall property and showed that if \(G\) is a hyperbolic limit group that satisfies this property, then \(G\) satisfies the HNC. Antol&iacute;n&#8211;Jaikin-Zapirain established the \(L^2\)-Hall property for free and surface groups, which Brown&#8211;Kharlampovich extended to all limit groups. In this article, we prove the \(L^2\)-Hall property for graphs of free groups with cyclic edge groups that are hyperbolic relative to virtually abelian subgroups and also give another proof of the \(L^2\)-Hall property for limit groups.  As a corollary, we show that all these groups satisfy a strengthened version of the HNC.
+                    </div>
+                </div>
+                
+                <li> 
+                    <t data-toggle="collapse" data-target="#div_rings" aria-expanded="false" aria-controls="div_rings">Division rings for group algebras of virtually compact special groups and \(3\)-manifold groups</t> (2023). <i>J. Comb. Algebra (to appear)</i>. Joint with <a href="https://sites.google.com/view/pablosanchez-peralta/" target="_blank"> Pablo Sánchez-Peralta</a>, <a href="https://arxiv.org/abs/2303.08165" target="_blank">arXiv</a>
+                </li>
+                <div class="collapse" id="div_rings">
+                    <div class="card card-body">
+                        Let \(k\) be a division ring and let \(G\) be either a torsion-free virtually compact special group or a torsion-free \(3\)-manifold group. We embed the group algebra \(kG\) in a division ring and prove that the embedding is Hughes-free whenever \(G\) is locally indicable. In particular, we prove that Kaplansky's zerodivisor conjecture holds for all group algebras of torsion-free \(3\)-manifold groups. The embedding is also used to confirm a conjecture of Kielak and Linton. Thanks to the work of Jaikin-Zapirain, another consequence of the embedding is that \(kG\) is coherent wehenver \(G\) is virtually compact special one-relator group.<br>
+                        &nbsp&nbsp&nbsp If \(G\) is a torsion-free one-relator group, let \(\overline{kG}\) be the division ring containing \(kG\) constructed by Lewin and Lewin. We prove that \(\overline{kG}\) is Hughes-free whenever a Hughes-free \(kG\)-division ring exists. This is always the case when \(k\) is of characteristic zero; in positive characteristic, our previous result implies this happens when \(G\) is virtually compact special.
+                    </div>
+                </div>
+                
+                <li>
+                    <t data-toggle="collapse" data-target="#modp_growth" aria-expanded="false" aria-controls="modp_growth">Homological growth of Artin kernels in positive characteristic</t>. <i>Math. Ann.</i> 389 (2024), no. 1. Joint with <a href="https://samhughesmaths.github.io/" target="_blank">Sam Hughes</a> and <a href="https://www.southampton.ac.uk/people/5x7v5y/professor-ian-leary" target="_blank">Ian J. Leary</a>. <a href="https://link.springer.com/article/10.1007/s00208-023-02663-1" target="_blank">Open access</a>, <a href="https://arxiv.org/abs/2212.03187" target="_blank">arXiv</a>
+                </li>
+                <div class="collapse" id="modp_growth">
+                    <div class="card card-body">
+                        We prove an analogue of the Lück Approximation Theorem in positive characteristic for certain residually finite rationally soluble (RFRS) groups including right-angled Artin groups and Bestvina–Brady groups. Specifically, we prove that the mod \(p\) homology growth equals the dimension of the group homology with coefficients in a certain universal division ring and this is independent of the choice of residual chain. For general RFRS groups we obtain an inequality between the invariants. We also consider a number of applications to fibring, amenable category, and minimal volume entropy.
+                    </div>
+                </div>
+                
+                <li> 
+                    <t data-toggle="collapse" data-target="#IMM_fibring" aria-expanded="false" aria-controls="IMM_fibring">Algebraic fibring of a hyperbolic \(7\)-manifold</t>. <i>Bull. Lond. Math. Soc.</i> 55 (2023), no. 3. <a href="https://londmathsoc.onlinelibrary.wiley.com/doi/full/10.1112/blms.12795" target="_blank">Open access</a>, <a href="https://arxiv.org/abs/2203.01125" target="_blank">arXiv</a>
+                </li>
+                <div class="collapse" id="IMM_fibring">
+                    <div class="card card-body">
+                        We show there is a finite-volume, hyperbolic \(7\)-manifold that algebraically fibres with finitely presented kernel of type \(\mathtt{FP}(\mathbb Q)\). This manifold is a finite cover of the one constructed by Italiano&ndash;Martelli&ndash;Migliorini. </div>
+                </div>
+
+                <li> <t data-toggle="collapse" data-target="#l2_fibring" aria-expanded="false" aria-controls="l2_fibring">Improved algebraic fibrings</t> (2021). <i>Compos. Math. (to appear)</i>. 
+                    <a href="https://arxiv.org/abs/2112.00397" target="_blank">arXiv</a>
+                </li>
+                <div class="collapse" id="l2_fibring">
+                    <div class="card card-body">
+                        We show that a virtually RFRS group \(G\) of type \(\mathrm{FP}_n(\mathbb{Q})\) virtually algebraically fibres with kernel of type \(\mathrm{FP}_n(\mathbb{Q})\) if and only if the first n \(\ell^2\)-Betti numbers of \(G\) vanish, that is, \(b^{(2)}_p(G)=0\) for \(0 \leqslant p \leqslant n\). We also offer a variant of this result over other fields, in particular in positive characteristic.<br>
+                        &nbsp&nbsp&nbsp As an application of the main result, we show that virtually amenable RFRS groups of type \(\mathrm{FP}_n(\mathbb{Q})\) are polycyclic-by-finite. It then follows that if \(G\) is a virtually RFRS group of type \(\mathrm{FP}_n(\mathbb{Q})\) such that \(\mathbb ZG\) is Noetherian, then \(G\) is polycyclic-by-finite. This answers a longstanding conjecture of Baer for virtually RFRS groups of type \(\mathrm{FP}_n(\mathbb{Q})\).
+                    </div>
+                </div>
+            </ol>
+
+            <h3>
+                Links
+            </h3>
+            <ul>
+                <li>Oxford's <a href="https://www.maths.ox.ac.uk/events/list/655">Junior Topology and Group Theory Seminar</a>, which I organised in 2023-2024</li>
+                <li>My <a href="PDFs/masters.pdf">master's thesis</a> </li>
+                <li>Some recordings of online talks:
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=qdAtlG6HEVE"> A Short Introduction to Profinite Groups</a>, a talk I gave at the Finite and Residual Methods around GGT section (which I organised with <a href="https://samhughesmaths.github.io/" target="_blank">Sam Hughes</a> and <a href="https://www.maths.ox.ac.uk/people/pawel.piwek">Pawe&#322; Piwek</a> of the <a href="https://www.ncngt.org/topic-groups/profinite-and-residual-methods">Nearly Carbon Neutral Geometric Topology Conference</a></li>
+                        <li>My talk <a href="https://www.youtube.com/watch?v=lLhxb39eeaE">Fibring of RFRS groups</a> at the <a href="https://faculty.tcu.edu/gfriedman/GTW2022/">2022 Workshop in Geometric Topology</a> at TCU</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>
+                Contact
+            </h3>
+            <dl>
+                <dt>fisher [at] maths.ox.ac.uk</dt>
+                <dt>Office N3.10</dt>
+                <dt>Mathematical Institute</dt>
+                <dt>University of Oxford</dt>
+            </dl>
         </div>
     </div>
-    <div>
-        <p>
-            <h3>
-                About
-            </h3>
-            I am a fifth year DPhil student in mathematics at the <a href="https://www.maths.ox.ac.uk/" target="_blank">University of Oxford</a> working under the supervision of <a href="https://people.maths.ox.ac.uk/kielak/" target="_blank">Dawid Kielak</a>. I completed my undergraduate and master's degrees at <a href="https://www.mcgill.ca/mathstat/" target="_blank">McGill University</a>. My master's thesis was supervised by <a href="https://www.math.mcgill.ca/wise/" target="_blank">Dani Wise</a>. Here is a <a href="PDFs/CV.pdf">CV</a> (last updated August 2024).
-        </p>
-        
-        <p>
-            <h3>
-                Research interests
-            </h3>
-            I am interested in infinite groups, which I mostly study using homological techniques. I like \(\ell^2\)-invariants (and their generalisations in positive characteristic), algebraic fibring, coherence, and residual properties of groups. I am also interested in group rings of infinite groups and producing embeddings of group rings into division rings.
-        </p>
-        
-        <h3>
-            Preprints and publications
-        </h3>
-        <ol reversed>
-            <li>
-                <t data-toggle="collapse" data-target="#vfbyz" aria-expanded="false" aria-controls="vfbyz">On the cohomological dimension of kernels of maps to \(\mathbb Z\)</t> (2024).
-                <a href="https://arxiv.org/abs/2403.18758" target="_blank">arXiv</a>
-            </li>
-            <div class="collapse" id="vfbyz">
-                <div class="card card-body">
-                    We prove that if \(G\) is a finitely generated RFRS group of cohomological dimension \(2\), then \(G\) is virtually free-by-cyclic if and only if \(b_2^{(2)}(G) = 0\). This answers a question of Wise and generalises and gives a new proof of a recent theorem of Kielak and Linton, where the same result is obtained under the additional hypotheses that \(G\) is virtually compact special and hyperbolic. More generally, we show that if \(G\) is a RFRS group of cohomological dimension \(n\) and of type \(\mathrm{FP}_{n-1}\), then \(G\) admits a virtual map to \(\mathbb Z\) with kernel of rational cohomological dimension \(n-1\) if and only if \(b_n^{(2)}(G) = 0\).
-                </div>
-            </div>
-                
-            <li> 
-                <t data-toggle="collapse" data-target="#L2Hall" aria-expanded="false" aria-controls="L2Hall">The Hanna Neumann Conjecture for graphs of free groups with cyclic edge groups</t> (2023). Joint with <a href="https://www.maths.ox.ac.uk/people/ismael.morales" target="_blank"> Ismael Morales</a>.
-                <i>Submitted</i>. <a href="https://arxiv.org/abs/2311.12910" target="_blank">arXiv</a>
-            </li>
-            <div class="collapse" id="L2Hall">
-                <div class="card card-body">
-                    The Hanna Neumann Conjecture (HNC) for a free group \(G\) predicts that \(\overline\chi(U\cap V)\leq \overline\chi (U)\overline\chi(V)\) for all finitely generated subgroups \(U\) and \(V\), where \(\overline\chi(H) = \min\{-\chi(H),0\}\) denotes the <em>reduced Euler characteristic</em> of \(H\). A strengthened version of the HNCwas proved independently by Friedman and Mineyev in 2011. Recently, Antol\'in and Jaikin-Zapirain introduced the \(L^2\)-Hall property and showed that if \(G\) is a hyperbolic limit group that satisfies this property, then \(G\) satisfies the HNC. Antol&iacute;n&#8211;Jaikin-Zapirain established the \(L^2\)-Hall property for free and surface groups, which Brown&#8211;Kharlampovich extended to all limit groups. In this article, we prove the \(L^2\)-Hall property for graphs of free groups with cyclic edge groups that are hyperbolic relative to virtually abelian subgroups and also give another proof of the \(L^2\)-Hall property for limit groups.  As a corollary, we show that all these groups satisfy a strengthened version of the HNC.
-                </div>
-            </div>
-            
-            <li> 
-                <t data-toggle="collapse" data-target="#div_rings" aria-expanded="false" aria-controls="div_rings">Division rings for group algebras of virtually compact special groups and \(3\)-manifold groups</t> (2023). <i>J. Comb. Algebra (to appear)</i>. Joint with <a href="https://sites.google.com/view/pablosanchez-peralta/" target="_blank"> Pablo Sánchez-Peralta</a>, <a href="https://arxiv.org/abs/2303.08165" target="_blank">arXiv</a>
-            </li>
-            <div class="collapse" id="div_rings">
-                <div class="card card-body">
-                    Let \(k\) be a division ring and let \(G\) be either a torsion-free virtually compact special group or a torsion-free \(3\)-manifold group. We embed the group algebra \(kG\) in a division ring and prove that the embedding is Hughes-free whenever \(G\) is locally indicable. In particular, we prove that Kaplansky's zerodivisor conjecture holds for all group algebras of torsion-free \(3\)-manifold groups. The embedding is also used to confirm a conjecture of Kielak and Linton. Thanks to the work of Jaikin-Zapirain, another consequence of the embedding is that \(kG\) is coherent wehenver \(G\) is virtually compact special one-relator group.<br>
-                    &nbsp&nbsp&nbsp If \(G\) is a torsion-free one-relator group, let \(\overline{kG}\) be the division ring containing \(kG\) constructed by Lewin and Lewin. We prove that \(\overline{kG}\) is Hughes-free whenever a Hughes-free \(kG\)-division ring exists. This is always the case when \(k\) is of characteristic zero; in positive characteristic, our previous result implies this happens when \(G\) is virtually compact special.
-                </div>
-            </div>
-            
-            <li>
-                <t data-toggle="collapse" data-target="#modp_growth" aria-expanded="false" aria-controls="modp_growth">Homological growth of Artin kernels in positive characteristic</t>. <i>Math. Ann.</i> 389 (2024), no. 1. Joint with <a href="https://samhughesmaths.github.io/" target="_blank">Sam Hughes</a> and <a href="https://www.southampton.ac.uk/people/5x7v5y/professor-ian-leary" target="_blank">Ian J. Leary</a>. <a href="https://link.springer.com/article/10.1007/s00208-023-02663-1" target="_blank">Open access</a>, <a href="https://arxiv.org/abs/2212.03187" target="_blank">arXiv</a>
-            </li>
-            <div class="collapse" id="modp_growth">
-                <div class="card card-body">
-                    We prove an analogue of the Lück Approximation Theorem in positive characteristic for certain residually finite rationally soluble (RFRS) groups including right-angled Artin groups and Bestvina–Brady groups. Specifically, we prove that the mod \(p\) homology growth equals the dimension of the group homology with coefficients in a certain universal division ring and this is independent of the choice of residual chain. For general RFRS groups we obtain an inequality between the invariants. We also consider a number of applications to fibring, amenable category, and minimal volume entropy.
-                </div>
-            </div>
-            
-            <li> 
-                <t data-toggle="collapse" data-target="#IMM_fibring" aria-expanded="false" aria-controls="IMM_fibring">Algebraic fibring of a hyperbolic \(7\)-manifold</t>. <i>Bull. Lond. Math. Soc.</i> 55 (2023), no. 3. <a href="https://londmathsoc.onlinelibrary.wiley.com/doi/full/10.1112/blms.12795" target="_blank">Open access</a>, <a href="https://arxiv.org/abs/2203.01125" target="_blank">arXiv</a>
-            </li>
-            <div class="collapse" id="IMM_fibring">
-                <div class="card card-body">
-                    We show there is a finite-volume, hyperbolic \(7\)-manifold that algebraically fibres with finitely presented kernel of type \(\mathtt{FP}(\mathbb Q)\). This manifold is a finite cover of the one constructed by Italiano&ndash;Martelli&ndash;Migliorini. </div>
-            </div>
-
-            <li> <t data-toggle="collapse" data-target="#l2_fibring" aria-expanded="false" aria-controls="l2_fibring">Improved algebraic fibrings</t> (2021). <i>Compos. Math. (to appear)</i>. 
-                <a href="https://arxiv.org/abs/2112.00397" target="_blank">arXiv</a>
-            </li>
-            <div class="collapse" id="l2_fibring">
-                <div class="card card-body">
-                    We show that a virtually RFRS group \(G\) of type \(\mathrm{FP}_n(\mathbb{Q})\) virtually algebraically fibres with kernel of type \(\mathrm{FP}_n(\mathbb{Q})\) if and only if the first n \(\ell^2\)-Betti numbers of \(G\) vanish, that is, \(b^{(2)}_p(G)=0\) for \(0 \leqslant p \leqslant n\). We also offer a variant of this result over other fields, in particular in positive characteristic.<br>
-                    &nbsp&nbsp&nbsp As an application of the main result, we show that virtually amenable RFRS groups of type \(\mathrm{FP}_n(\mathbb{Q})\) are polycyclic-by-finite. It then follows that if \(G\) is a virtually RFRS group of type \(\mathrm{FP}_n(\mathbb{Q})\) such that \(\mathbb ZG\) is Noetherian, then \(G\) is polycyclic-by-finite. This answers a longstanding conjecture of Baer for virtually RFRS groups of type \(\mathrm{FP}_n(\mathbb{Q})\).
-                </div>
-            </div>
-        </ol>
-
-        <h3>
-            Links
-        </h3>
-        <ul>
-            <li>Oxford's <a href="https://www.maths.ox.ac.uk/events/list/655">Junior Topology and Group Theory Seminar</a>, which I organised in 2023-2024</li>
-            <li>My <a href="PDFs/masters.pdf">master's thesis</a> </li>
-            <li>Some recordings of online talks I gave:
-                <ul>
-                    <li><a href="https://www.youtube.com/watch?v=qdAtlG6HEVE"> A Short Introduction to Profinite Groups</a>, a talk I gave at the Finite and Residual Methods around GGT section (which I organised with <a href="https://samhughesmaths.github.io/" target="_blank">Sam Hughes</a> and <a href="https://www.maths.ox.ac.uk/people/pawel.piwek">Pawe&#322; Piwek</a> of the <a href="https://www.ncngt.org/topic-groups/profinite-and-residual-methods">Nearly Carbon Neutral Geometric Topology Conference</a></li>
-                    <li>My talk <a href="https://www.youtube.com/watch?v=lLhxb39eeaE">Fibring of RFRS groups</a> at the <a href="https://faculty.tcu.edu/gfriedman/GTW2022/">2022 Workshop in Geometric Topology</a> at TCU</li>
-                </ul>
-            </li>
-        </ul>
-        
-        <h3>
-            Contact
-        </h3>
-        <dl>
-            <dt>fisher [at] maths.ox.ac.uk</dt>
-            <dt>Office N3.10</dt>
-            <dt>Mathematical Institute</dt>
-            <dt>University of Oxford</dt>
-        </dl>
-    </div>
- </div>
-
-        
-        
-        
-        
 </body>
 </html>
