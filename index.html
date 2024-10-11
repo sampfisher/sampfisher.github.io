@@ -80,26 +80,7 @@
         transition: 0.3s;
         text-decoration: none;
     }
-    @font-face {
-        font-family: "Computer Modern";
-        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
-    }
-    @font-face {
-        font-family: "Computer Modern";
-        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
-        font-weight: bold;
-    }
-    @font-face {
-        font-family: "Computer Modern";
-        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
-        font-style: italic, oblique;
-    }
-    @font-face {
-        font-family: "Computer Modern";
-        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
-        font-weight: bold;
-        font-style: italic, oblique;
-    }
+    
     body {
         background-color:#e1edff;
         padding: 35px 35px 35px 35px;
@@ -133,7 +114,7 @@
     <div class="left-sidebar">
         <div class>
             <div class="column2">
-                <img img id="randImg" src="" alt="Random image" style="float:right" height="250px" ALIGN="left" HSPACE="10">
+                <img img id="randImg" src="" alt="Random image" style="float:right" height="245px" ALIGN="left" HSPACE="10">
             </div>
         </div>
         <div>
@@ -141,7 +122,7 @@
                 <h3>
                     About
                 </h3>
-                I am a fifth year DPhil student in mathematics at the <a href="https://www.maths.ox.ac.uk/" target="_blank">University of Oxford</a> working under the supervision of <a href="https://people.maths.ox.ac.uk/kielak/" target="_blank">Dawid Kielak</a>. I completed my undergraduate and master's degrees at <a href="https://www.mcgill.ca/mathstat/" target="_blank">McGill University</a>. My master's thesis was supervised by <a href="https://www.math.mcgill.ca/wise/" target="_blank">Dani Wise</a>. Here is a <a href="PDFs/CV.pdf">CV</a> (last updated August 2024).
+                I am a fifth year DPhil student in mathematics at the <a href="https://www.maths.ox.ac.uk/" target="_blank">University of Oxford</a> working under the supervision of <a href="https://people.maths.ox.ac.uk/kielak/" target="_blank">Dawid Kielak</a>. I completed my undergraduate and master's degrees at <a href="https://www.mcgill.ca/mathstat/" target="_blank">McGill University</a>. My master's thesis was supervised by <a href="https://www.math.mcgill.ca/wise/" target="_blank">Dani Wise</a>. Here is a <a href="PDFs/CV.pdf" target="_blank">CV</a> (last updated August 2024).
             </p>
             
             <p>
@@ -155,6 +136,17 @@
                 Preprints and publications
             </h3>
             <ol reversed>
+                <li>
+                    <t data-toggle="collapse" data-target="#RPVN" aria-expanded="false" aria-controls="RPVN">Dimension drop in residual chains</t> (2024). Joint with <a href="https://kevins.science/" target="_blank"> Kevin Klinge</a>.
+                    <a href="https://arxiv.org/abs/2410.08153" target="_blank">arXiv</a>
+                </li>
+                <div class="collapse" id="RPVN">
+                    <div class="card card-body">
+                        We give a description of the Linnell division ring of a countable residually (poly-\(\mathbb{Z}\) virtually nilpotent) (RPVN) group in terms of a generalised Novikov ring, and show that vanishing top-degree cohomology of a finite type group \(G\) with coefficients in this Novikov ring implies the existence of a normal subgroup \(N \leqslant G\) such that \(\mathrm{cd}_{\mathbb Q}(N) < \mathrm{cd}_{\mathbb Q}(G)\) and \(G/N\) is poly-\(\mathbb Z\) virtually nilpotent. <br>
+                        &nbsp&nbsp&nbsp As a consequence, we show that if \(G\) is an RPVN group of finite type, then its top-degree \(\ell^2\)-Betti number vanishes if and only if there is a poly-\(\mathbb Z\) virtually nilpotent quotient \(G/N\) such that \(\mathrm{cd}_{\mathbb Q}(N) < \mathrm{cd}_{\mathbb Q}(G)\). In particular, finitely generated RPVN groups of cohomological dimension \(2\) are virtually free-by-nilpotent if and only if their second \(\ell^2\)-Betti number vanishes, and therefore \(2\)-dimensional RPVN groups with vanishing second \(\ell^2\)-Betti number are coherent. As another application, we show that if \(G\) is a finitely generated parafree group with \(\mathrm{cd}(G) = 2\), then \(G\) satisfies the Parafree Conjecture if and only if the terms of its lower central series are eventually free. Note that the class of RPVN groups contains all finitely generated RFRS groups and all finitely generated residually torsion-free nilpotent groups.
+                    </div>
+                </div>
+
                 <li>
                     <t data-toggle="collapse" data-target="#vfbyz" aria-expanded="false" aria-controls="vfbyz">On the cohomological dimension of kernels of maps to \(\mathbb Z\)</t> (2024).
                     <a href="https://arxiv.org/abs/2403.18758" target="_blank">arXiv</a>
@@ -171,7 +163,7 @@
                 </li>
                 <div class="collapse" id="L2Hall">
                     <div class="card card-body">
-                        The Hanna Neumann Conjecture (HNC) for a free group \(G\) predicts that \(\overline\chi(U\cap V)\leq \overline\chi (U)\overline\chi(V)\) for all finitely generated subgroups \(U\) and \(V\), where \(\overline\chi(H) = \min\{-\chi(H),0\}\) denotes the <em>reduced Euler characteristic</em> of \(H\). A strengthened version of the HNCwas proved independently by Friedman and Mineyev in 2011. Recently, Antol\'in and Jaikin-Zapirain introduced the \(L^2\)-Hall property and showed that if \(G\) is a hyperbolic limit group that satisfies this property, then \(G\) satisfies the HNC. Antol&iacute;n&#8211;Jaikin-Zapirain established the \(L^2\)-Hall property for free and surface groups, which Brown&#8211;Kharlampovich extended to all limit groups. In this article, we prove the \(L^2\)-Hall property for graphs of free groups with cyclic edge groups that are hyperbolic relative to virtually abelian subgroups and also give another proof of the \(L^2\)-Hall property for limit groups.  As a corollary, we show that all these groups satisfy a strengthened version of the HNC.
+                        The Hanna Neumann Conjecture (HNC) for a free group \(G\) predicts that \(\overline\chi(U\cap V)\leq \overline\chi (U)\overline\chi(V)\) for all finitely generated subgroups \(U\) and \(V\), where \(\overline\chi(H) = \min\{-\chi(H),0\}\) denotes the <em>reduced Euler characteristic</em> of \(H\). A strengthened version of the HNCwas proved independently by Friedman and Mineyev in 2011. Recently, Antolín and Jaikin-Zapirain introduced the \(L^2\)-Hall property and showed that if \(G\) is a hyperbolic limit group that satisfies this property, then \(G\) satisfies the HNC. Antolín&#8211;Jaikin-Zapirain established the \(L^2\)-Hall property for free and surface groups, which Brown&#8211;Kharlampovich extended to all limit groups. In this article, we prove the \(L^2\)-Hall property for graphs of free groups with cyclic edge groups that are hyperbolic relative to virtually abelian subgroups and also give another proof of the \(L^2\)-Hall property for limit groups.  As a corollary, we show that all these groups satisfy a strengthened version of the HNC.
                     </div>
                 </div>
                 
@@ -180,7 +172,7 @@
                 </li>
                 <div class="collapse" id="div_rings">
                     <div class="card card-body">
-                        Let \(k\) be a division ring and let \(G\) be either a torsion-free virtually compact special group or a torsion-free \(3\)-manifold group. We embed the group algebra \(kG\) in a division ring and prove that the embedding is Hughes-free whenever \(G\) is locally indicable. In particular, we prove that Kaplansky's zerodivisor conjecture holds for all group algebras of torsion-free \(3\)-manifold groups. The embedding is also used to confirm a conjecture of Kielak and Linton. Thanks to the work of Jaikin-Zapirain, another consequence of the embedding is that \(kG\) is coherent wehenver \(G\) is virtually compact special one-relator group.<br>
+                        Let \(k\) be a division ring and let \(G\) be either a torsion-free virtually compact special group or a torsion-free \(3\)-manifold group. We embed the group algebra \(kG\) in a division ring and prove that the embedding is Hughes-free whenever \(G\) is locally indicable. In particular, we prove that Kaplansky's Zero Divisor conjecture holds for all group algebras of torsion-free \(3\)-manifold groups. The embedding is also used to confirm a conjecture of Kielak and Linton. Thanks to the work of Jaikin-Zapirain, another consequence of the embedding is that \(kG\) is coherent whenever \(G\) is virtually compact special one-relator group.<br>
                         &nbsp&nbsp&nbsp If \(G\) is a torsion-free one-relator group, let \(\overline{kG}\) be the division ring containing \(kG\) constructed by Lewin and Lewin. We prove that \(\overline{kG}\) is Hughes-free whenever a Hughes-free \(kG\)-division ring exists. This is always the case when \(k\) is of characteristic zero; in positive characteristic, our previous result implies this happens when \(G\) is virtually compact special.
                     </div>
                 </div>
@@ -216,12 +208,12 @@
                 Links
             </h3>
             <ul>
-                <li>Oxford's <a href="https://www.maths.ox.ac.uk/events/list/655">Junior Topology and Group Theory Seminar</a>, which I organised in 2023-2024</li>
-                <li>My <a href="PDFs/masters.pdf">master's thesis</a> </li>
+                <li>Oxford's <a href="https://www.maths.ox.ac.uk/events/list/655" target="_blank">Junior Topology and Group Theory Seminar</a>, which I organised in 2023-2024</li>
+                <li>My <a href="PDFs/masters.pdf" target="_blank">master's thesis</a> </li>
                 <li>Some recordings of online talks:
                     <ul>
-                        <li><a href="https://www.youtube.com/watch?v=qdAtlG6HEVE"> A Short Introduction to Profinite Groups</a>, a talk I gave at the Finite and Residual Methods around GGT section (which I organised with <a href="https://samhughesmaths.github.io/" target="_blank">Sam Hughes</a> and <a href="https://www.maths.ox.ac.uk/people/pawel.piwek">Pawe&#322; Piwek</a> of the <a href="https://www.ncngt.org/topic-groups/profinite-and-residual-methods">Nearly Carbon Neutral Geometric Topology Conference</a></li>
-                        <li>My talk <a href="https://www.youtube.com/watch?v=lLhxb39eeaE">Fibring of RFRS groups</a> at the <a href="https://faculty.tcu.edu/gfriedman/GTW2022/">2022 Workshop in Geometric Topology</a> at TCU</li>
+                        <li><a href="https://www.youtube.com/watch?v=qdAtlG6HEVE" target="_blank"> A Short Introduction to Profinite Groups</a>, a talk I gave at the Finite and Residual Methods around GGT section (which I organised with <a href="https://samhughesmaths.github.io/" target="_blank">Sam Hughes</a> and <a href="https://www.maths.ox.ac.uk/people/pawel.piwek">Pawe&#322; Piwek</a> of the <a href="https://www.ncngt.org/topic-groups/profinite-and-residual-methods" target="_blank">Nearly Carbon Neutral Geometric Topology Conference</a></li>
+                        <li>My talk <a href="https://www.youtube.com/watch?v=lLhxb39eeaE" target="_blank">Fibring of RFRS groups</a> at the <a href="https://faculty.tcu.edu/gfriedman/GTW2022/" target="_blank">2022 Workshop in Geometric Topology</a> at TCU</li>
                     </ul>
                 </li>
             </ul>
