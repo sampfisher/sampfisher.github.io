@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    .bord {
+        display: table;
+        padding: 3px;
+        border-radius: 10px;
+        border: 0.8px solid black;
+        background-origin: border-box;
+        background-color: #fcf3cb;
+        display: none;
+    }
+    .card-body { background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    .collapsing.panel {background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    /* container */
+    .right-sidebar {
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .right-sidebar > * {
+        width:100%;
+        padding:1rem;
+    }
+    @media (min-width:950px) {
+        .right-sidebar > *:nth-child(1) {
+            width:calc(75%);
+        }
+        .right-sidebar > *:nth-child(2) {
+            width:calc(25%);
+        }
+    }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    t {
+        color: #034682;
+    }
+    t:hover {
+        color:  #a93226;
+        transition: 0.3s;
+    }
+    a:link {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:hover {
+        color:  #a93226;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
+        font-style: italic, oblique;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
+        font-weight: bold;
+        font-style: italic, oblique;
+    }
+    body {
+        background-color:#e1edff;
+        padding-right: 10%;
+        padding-left: 10%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        max-width: 800px;
+        font-family: "Computer Modern", sans-serif;
+        text-align: justify;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    ol {list-style-type: none;}
+    li:before {content: "(" counter(section, lower-roman) ") ";}
+    li { counter-increment: section;}
+    .topnav {
+        float: right;
+    }
+    .topnav a {
+        padding-left: 15px;
+    }
+</style>
+
+<div class="topnav" id="myTopnav">
+    <a href="../index.html">Home</a>
+    <a href="../math.html">Blog</a>
+</div>
+
+<body>
+    <h2>Coherence of one-relator groups</h2>
+
+    <p>
+        Last week in a reading group on one-relator groups (organised by Shaked Bader) I spoke about Andrei Jaikin-Zapirain and Marco Linton's <a href="https://arxiv.org/abs/2303.05976" target="_blank">recent proof</a> that one-relator groups are coherent. Since the proof of this is relatively short (depending on which results you are willing to accept as black boxes), I thought it was a good topic to write about here.
+    </p>
+    <p>
+        A group is <i>coherent</i> if all its finitely generated subgroups are finitely presented, and a <i>one-relator group</i> is a group admitting a presentation with a single defining relation. It is a conjecture of Baumslag's from the 1960's that one-relator groups should be coherent.
+    </p>
+
+    <br>
+    <h4>1. Setup</h4>
+
+    <p>
+        The first step in establishing that one-relator groups are coherent is proving that they are homologically coherent. The approach I will discuss here is to prove that homological coherence follows quickly from the Atiyah conjecture for one-relator groups. A different approach is to combine the non-positive immersions property with the embedding of the group algebra into a division ring (which was known much earlier than the Atiyah conjecture in the case of one-relator groups).
+    </p>
+    <p>
+        We denote by \(\mathbb Q[G]\) the group ring of \(G\) with coefficients in \(\mathbb Q\). Recall that a group \(G\) is of <i>type \(\mathrm{FP}_2(\mathbb Q)\)</i> if the trivial \(\mathbb Q[G]\)-module \(\mathbb Q\) admits a projective resolution of the form \[\cdots \to P_{i+1} \to P_i \to \cdots \to P_1 \to P_0 \to \mathbb Q \to 0\] where \(P_i\) is finitely generated for \(i \leqslant 2\). It is an easy exercise to show that finitely presented groups are of type \(\mathrm{FP}_2(\mathbb Q)\). It is also not so difficult to show that a group is finitely generated if and only if it is of type \(\mathrm{FP}_1(\mathbb Q)\). It is <a href="https://link.springer.com/article/10.1007/s002220050168" target="_blank">a result of Bestvina and Brady</a> that there exist groups of type \(\mathrm{FP}_2(\mathbb Q)\) that are not finitely presented. A group is of <i>rational cohomological dimension at most two</i> if there is a \(\mathbb Q[G]\)-projective resolution of the form \[0 \to P_2 \to P_1 \to P_0 \to \mathbb Q \to 0.\]
+    </p>
+    <p>
+        <b>Definition.</b> A group \(G\) is <i>homologically coherent</i> if all its finitely generated subgroups are of type \(\mathrm{FP}_2(\mathbb Q)\).
+    </p>
+    <p>
+        Disclaimer: in Jaikin-Zapirain and Linton's article, they define homological coherence to mean that all finitely generated subgroups are of type \(\mathrm{FP}_2(\mathbb Z)\), which is a stronger condition (a priori, since there are no known examples of incoherent groups all of whose finitely generated subgroups are of type \(\mathrm{FP}_2(\mathbb Q)\)).
+    </p>
+    <p>
+        The <i>strong Atiyah conjecture over \(\mathbb Q\)</i> (from now on, just the <i>Atiyah conjecture</i>) for a group \(G\) concerns the possible values of the associated von Neumann rank function \(\dim_{\mathcal U(G)} \colon \mathrm{Mat}(\mathbb Q[G]) \to \mathbb R_{>0}\). Since I want to keep this entry short, I will refer the reader to <a href="https://link.springer.com/book/10.1007/978-3-662-04687-6" target="_blank">Lück's book</a> for more details. Really what we need is the following consequence of the Atiyah conjecture:
+    </p>
+    <p>
+        <b>Theorem</b> (<a href="https://eudml.org/doc/141719" target="_blank">Linnell, 1993</a>)<b>.</b> <i>If \(G\) is a torsion-free group satisfying the Atiyah conjecture, then there is a division ring \(\mathcal D_{\mathbb Q[G]}\) containing \(\mathbb Q[G]\) as a subring.</i>
+    </p>
+    <p>
+        Recall that a <i>division ring</i> is a ring in which every non-zero element has a multiplicative inverse (so a commutative division ring is the same thing a field). If \(H \leqslant G\) is a subgroup, then \(\mathbb Q[H] \leqslant \mathbb Q[G]\), and we denote the <i>division closure</i> of \(\mathbb Q[H]\) in \(\mathcal D_G\) by \(\mathcal D_H\). The division ring \(\mathcal D_G\) has the following special property: for all subgroups \(H \leqslant G\), the natural map \[\mathcal D_H \otimes_{\mathbb Q[H]} \mathbb Q[G] \rightarrow \mathcal D_G, \quad x \otimes y \mapsto xy\] is injective. Put differently, the cosets of \(H\) in \(G\) are linearly independent over \(\mathcal D_H\). This technical condition is often very useful, and goes by the name of <i>strong Hughes-freeness</i>.
+    </p>
+    <p>
+        <b>Definition.</b> Let \(G\) be a torsion-free group satisfying the Atiyah conjecture. Then the division ring \(\mathcal D_G\) is a \(\mathbb Q[G]\)-module, and therefore it makes sense to consider the group homology of \(G\) with coefficients in \(\mathcal D_G\). The <i>\(n\)<sup>th</sup> \(L^2\)-Betti number of \(G\)</i> is \[b_n^{(2)}(G) = \dim_{\mathcal D_G} \mathrm{H}_n(G;\mathcal D_G).\]
+    </p>
+    <p>
+        Note that if \(M\) is a \(\mathcal D_G\)-module, then it is a free module of unique rank because \(\dim_{\mathcal D_G}\) is a division ring (this is just like for modules over a field, i.e. vector spaces). This unique rank is denoted by \(\dim_{\mathcal D_G} M\).
+    </p>
+    <p>
+        With this background out of the way, we can now prove that one-relator groups are homologically coherent.
+    </p>
+
+    <br>
+    <h4>2. Homological coherence</h4>
+
+    <p>
+        The goal of this section is to prove that the vanishing of the second \(L^2\)-Betti number implies homological coherence for groups of cohomological dimension two, assuming the Atiyah conjecture.
+    </p>
+
+    <p>
+        <b>Theorem 2.1</b> (Jaikin-Zapirain–Linton, 2025)<b>.</b> <i>Let \(G\) be a torsion-free group of rational cohomological dimension \(2\) satisfying the Atiyah conjecture. If \(b_2^{(2)}(G) = 0\), then \(G\) is homologically coherent.</i>
+    </p>
+
+    <p>
+        The proof of the theorem will rely on the following two facts.
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#Fact1" aria-expanded="false" aria-controls="Fact1"><b>Fact 2.2.</b> <i>Let \(R \hookrightarrow S\) be an inclusion of rings and let \(P\) be a projective left \(R\)-module. Then \(P\) is finitely generated if and only if \(S \otimes_R P\) is finitely generated as a left \(S\)-module.</i></t>
+    </p>
+    <div class="collapse" id="Fact1">
+        <div class="card card-body">
+            <p>
+                <i>Proof.</i> If \(P\) is generated by elements \(x_1, \dots, x_n\), then \(S \otimes_R P\) is generated by the elements \(1 \otimes x_1, \dots, 1 \otimes x_n\). hence, assume that \(S \otimes P\) is finitely generated, say by elements \[\left\{\sum_{i=1^m} s_i^j \otimes x_i^j : j = 1, \dots, n \right\}.\] Let \(M\) be the submodule of \(P\) generated by the elements \(x_i^j\) for \(1 \leqslant i \leqslant m\) and \(1 \leqslant j \leqslant n\).
+            </p>
+            <p>
+                Let \(Q\) be an \(R\)-module such that \(P \oplus Q = F\) is a free \(R\)-module, and let \(F_0 \leqslant F\) be a finitely generated free summand containing \(M\). Therefore, there is a natural map \[f \colon P/M \rightarrow F/F_0\] induced by the inclusion \(P \hookrightarrow F\). By definition of \(M\), the module \(S \otimes_R P/M\) is trivial, and therefore \(S \otimes_R \operatorname{im}(f) = 0\). But the diagram
+                \[\begin{CD}
+                        \operatorname{im}(f) @>>> F/F_0\\
+                        @VVV @VVV \\
+                        S \otimes_R P/M @>>> S \otimes_R F/F_0
+                \end{CD}\]
+                commutes, and the composition \(\operatorname{im}(f) \to F/F_0 \to S \otimes_R F/F_0\) is clearly injective (since \(F/F_0\) is free). Hence, \(\operatorname{im}(f) = 0\). It follows that \(P \leqslant F_0\), and therefore that \(P = \pi_P(F_0)\), where \(\pi_P\colon F \rightarrow P\) is the canonical projection. Hence, \(P\) is finitely generated, since \(F_0\) is. <span style="float: right;">\(\square\)</span>
+            </p>
+        </div>
+    </div>
+
+    <p>
+        <t data-toggle="collapse" data-target="#Fact2" aria-expanded="false" aria-controls="Fact2"><b>Fact 2.3.</b> <i>If \(G\) is a group of rational cohomological dimension at most two such that \(b_2^{(2)}(G) = 0\), then \(b_2^{(2)}(H) = 0\) for every subgroup \(H \leqslant G\).</i></t>
+    </p>
+    <div class="collapse" id="Fact2">
+        <div class="card card-body">
+            <p>
+                <i>Proof.</i> We will prove the conjecture assuming that \(G\) is torsion-free and satisfies the Atiyah conjecture, though we could have a given a completely analogous proof of the general case had we introduced some basic facts about the algebra of affiliated operators of \(G\). Let \(0 \to P_2 \to P_1 \to P_0 \to \mathbb Q \to 0\) be a \(\mathbb Q[G]\)-projective resolution. Since \(\mathbb Q[G]\) is free as a \(\mathbb Q[H]\)-module (with basis given by a set of coset representatives), it suffices to show that the induced map \[\mathcal D_H \otimes_{\mathbb Q[H]} P_2 \rightarrow \mathcal D_H \otimes_{\mathbb Q[H]} P_1\] is injective.
+            </p>
+            <p>
+                Given the commutative square
+                \[\begin{CD}
+                    \mathcal D_H \otimes_{\mathbb Q[H]} P_2 @>>> \mathcal D_H \otimes_{\mathbb Q[H]} P_1\\
+                    @VVV @VVV \\
+                    \mathcal D_G \otimes_{\mathbb Q[G]} P_2 @>>> \mathcal D_G \otimes_{\mathbb Q[G]} P_1
+                \end{CD}\]
+                and the fact that the bottom horizontal map is assumed to be injective (since \(b_2^{(2)}(G) = 0\)), it suffices to show that \[\mathcal D_H \otimes_{\mathbb Q[H]} P_2\ \rightarrow \mathcal D_G \otimes_{\mathbb Q[G]} P_2\] is injective. Let \(\bigoplus \mathbb Q[G]\) be a free module containing \(P_2\) as a direct summand. Then there is a commutative square 
+                \[\begin{CD}
+                    \mathcal D_H \otimes_{\mathbb Q[H]} P_2 @>>> \mathcal D_G \otimes_{\mathbb Q[G]} P_2\\
+                    @VVV @VVV \\
+                    \bigoplus (\mathcal D_H \otimes_{\mathbb Q[H]} \mathbb Q[G]) @>>> \mathcal \bigoplus \mathcal D_G
+                \end{CD}\]
+                with injective vertical maps. The bottom map is also injective by the strong Hughes-freeness property mentioned in the Section 1, which implies injectivity of the top map, as desired. <span style="float: right;">\(\square\)</span>
+            </p>
+        </div>
+    </div>
+
+    <p>
+        <t data-toggle="collapse" data-target="#proof" aria-expanded="false" aria-controls="proof"><i>Proof of Theorem 2.1.</i></t>
+    </p>
+    <div class="collapse" id="proof">
+        <div class="card card-body">
+            Let \(H\) be a finitely generated subgroup of \(G\) and let \[0 \to P_2 \to P_1 \to P_0 \to \mathbb Q \to 0\] be a \(\mathbb Q[H]\)-projective resolution such that \(P_0\) and \(P_1\) are finitely generated. By Fact 2.3, the map \(\mathcal D_H \otimes_{\mathbb Q[H]} P_2 \rightarrow \mathcal D_H \otimes_{\mathbb Q[H]} P_1\) is injective. But \(\mathcal D_H \otimes_{\mathbb Q[H]} P_1\) is a finitely generated \(\mathcal D_H\)-module, so all its submodules are also finitely generated (this has the same proof as the corresponding fact in linear algebra; alternatively note that \(\mathcal D_H\) is a Noetherian ring). Hence, \(\mathcal D_H \otimes_{\mathbb Q[H]} P_2\) is finitely generated, which means that \(H\) is of type \(\mathrm{FP}_2(\mathbb Q)\). <span style="float: right;">\(\square\)</span>
+        </div>
+    </div>
+
+    <p>
+        We will now quote the essential results to obtain the following corollary.
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#onerelhomol" aria-expanded="false" aria-controls="onerelhomol"><b>Corollary 2.4.</b> <i>One-relator groups are homologically coherent.</i></t>
+    </p>
+    <div class="collapse" id="onerelhomol">
+        <div class="card card-body">
+            <p>
+                <i>Proof (sketch).</i> That one-relator groups satisfy the Atiyah conjecture follows from <a href="https://arxiv.org/abs/1810.12135" target="_blank">work of Jaikin-Zapirain and López-Álvarez</a>. That one-relator groups are of rational cohomological dimension two is a consequence of the Lyndon Identity Theorem. Finally, one-relator groups have vanishing second \(L^2\)-Betti number by a result of <a href="https://arxiv.org/abs/math/0508370" target="_blank">Dicks and Linnell</a>. It should be noted that one-relator groups are virtually torsion-free, so the arguments above need to be applied to an appropriate finite-index subgroup.
+            </p>
+            <p>
+                In the case that \(G\) is torsion-free, we show that the second \(L^2\)-Betti number computation is an easy consequence of the Atiyah conjecture. Indeed, for a torsion-free one-relator group \(G\), there is a projective resolution of the form \[0 \to \mathbb Q[G] \rightarrow \bigoplus \mathbb Q[G] \rightarrow \mathbb Q[G] \to \mathbb Q \to 0\]
+            </p>
+            (assuming \(G\) is non-free, otherwise the result is trivial, since free groups have cohomological dimension at most one). Since the map \(\mathbb Q[G] \rightarrow \bigoplus \mathbb Q[G]\) is non-trivial, and \(\mathbb Q[G]\) embeds in \(\mathcal D_G\), it follows that the induced map \(\mathcal D_G \rightarrow \bigoplus \mathcal D_G\) is also non-trivial. Since \(\mathcal D_G\) is a division ring, this forces the map to be injective (since the domain is one-dimensional). In particular, \(b_2^{(2)}(G) = 0\). <span style="float: right;">\(\square\)</span>
+        </div>
+    </div>
+
+    <br>
+    <h4>3. Full coherence</h4>
+
+    <p>
+        The final step of the proof consists in upgrading homological coherence to coherence. While it is not known whether coherence and homological coherence are equivalent in general, Jaikin-Zapirain and Linton show that this is the case for a fairly general class of groups admitting a certain type of hierarchy terminating in coherent groups. In this section we will assume the reader is familiar with some Bass–Serre theory, i.e. the theory of groups acting on trees. The main result used for this step is the following theorem of Guirardel and Levitt. In everything that follows, we assume that graphs are simplicial and that group actions on graphs are simplicial and do not invert edges. A <i>morphism</i> of graphs is a continuous map that sends vertices to vertices and edges to edge paths.
+    </p>
+
+    <p>
+        <b>Theorem 3.1</b> (Guirardel–Levitt)<b>.</b> <i>Let \(G\) be a finitely presented group acting cocompactly on a tree \(\mathcal T\). There is a tree \(\mathcal S\) such that \(G\) acts cocompactly on \(\mathcal S\) with finitely generated vertex and edge stabilisers, and there is a \(G\)-equivariant graph morphism \(\mathcal S \to \mathcal T\).</i>
+    </p>
+</body>
