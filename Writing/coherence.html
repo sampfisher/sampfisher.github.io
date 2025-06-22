@@ -128,7 +128,7 @@
         Last week in a reading group on one-relator groups (organised by Shaked Bader) I spoke about Andrei Jaikin-Zapirain and Marco Linton's <a href="https://arxiv.org/abs/2303.05976" target="_blank">recent proof</a> that one-relator groups are coherent. Since the proof of this is relatively short (depending on which results you are willing to accept as black boxes), I thought it was a good topic to write about here.
     </p>
     <p>
-        A group is <i>coherent</i> if all its finitely generated subgroups are finitely presented, and a <i>one-relator group</i> is a group admitting a presentation with a single defining relation. It is a conjecture of Baumslag's from the 1960's that one-relator groups should be coherent.
+        A group is <i>coherent</i> if all its finitely generated subgroups are finitely presented, and a <i>one-relator group</i> is a group admitting a presentation with a single defining relation. In the 1960's, Baumslag conjectured that one-relator groups should be coherent.
     </p>
 
     <br>
@@ -173,7 +173,7 @@
     </p>
 
     <p>
-        <b>Theorem 2.1</b> (Jaikin-Zapirain–Linton, 2025)<b>.</b> <i>Let \(G\) be a torsion-free group of rational cohomological dimension \(2\) satisfying the Atiyah conjecture. If \(b_2^{(2)}(G) = 0\), then \(G\) is homologically coherent.</i>
+        <b>Theorem 2.1</b> (Jaikin-Zapirain–Linton)<b>.</b> <i>Let \(G\) be a torsion-free group of rational cohomological dimension \(2\) satisfying the Atiyah conjecture. If \(b_2^{(2)}(G) = 0\), then \(G\) is homologically coherent.</i>
     </p>
 
     <p>
@@ -248,9 +248,8 @@
                 <i>Proof (sketch).</i> That one-relator groups satisfy the Atiyah conjecture follows from <a href="https://arxiv.org/abs/1810.12135" target="_blank">work of Jaikin-Zapirain and López-Álvarez</a>. That one-relator groups are of rational cohomological dimension two is a consequence of the Lyndon Identity Theorem. Finally, one-relator groups have vanishing second \(L^2\)-Betti number by a result of <a href="https://arxiv.org/abs/math/0508370" target="_blank">Dicks and Linnell</a>. It should be noted that one-relator groups are virtually torsion-free, so the arguments above need to be applied to an appropriate finite-index subgroup.
             </p>
             <p>
-                In the case that \(G\) is torsion-free, we show that the second \(L^2\)-Betti number computation is an easy consequence of the Atiyah conjecture. Indeed, for a torsion-free one-relator group \(G\), there is a projective resolution of the form \[0 \to \mathbb Q[G] \rightarrow \bigoplus \mathbb Q[G] \rightarrow \mathbb Q[G] \to \mathbb Q \to 0\]
+                In the case that \(G\) is torsion-free, we show that the second \(L^2\)-Betti number computation is an easy consequence of the Atiyah conjecture. Indeed, for a torsion-free one-relator group \(G\), there is a projective resolution of the form \[0 \to \mathbb Q[G] \rightarrow \bigoplus \mathbb Q[G] \rightarrow \mathbb Q[G] \to \mathbb Q \to 0\] (assuming \(G\) is non-free, otherwise the result is trivial, since free groups have cohomological dimension at most one). Since the map \(\mathbb Q[G] \rightarrow \bigoplus \mathbb Q[G]\) is non-trivial, and \(\mathbb Q[G]\) embeds in \(\mathcal D_G\), it follows that the induced map \(\mathcal D_G \rightarrow \bigoplus \mathcal D_G\) is also non-trivial. Since \(\mathcal D_G\) is a division ring, this forces the map to be injective (since the domain is one-dimensional). In particular, \(b_2^{(2)}(G) = 0\). <span style="float: right;">\(\square\)</span>
             </p>
-            (assuming \(G\) is non-free, otherwise the result is trivial, since free groups have cohomological dimension at most one). Since the map \(\mathbb Q[G] \rightarrow \bigoplus \mathbb Q[G]\) is non-trivial, and \(\mathbb Q[G]\) embeds in \(\mathcal D_G\), it follows that the induced map \(\mathcal D_G \rightarrow \bigoplus \mathcal D_G\) is also non-trivial. Since \(\mathcal D_G\) is a division ring, this forces the map to be injective (since the domain is one-dimensional). In particular, \(b_2^{(2)}(G) = 0\). <span style="float: right;">\(\square\)</span>
         </div>
     </div>
 
@@ -258,10 +257,161 @@
     <h4>3. Full coherence</h4>
 
     <p>
-        The final step of the proof consists in upgrading homological coherence to coherence. While it is not known whether coherence and homological coherence are equivalent in general, Jaikin-Zapirain and Linton show that this is the case for a fairly general class of groups admitting a certain type of hierarchy terminating in coherent groups. In this section we will assume the reader is familiar with some Bass–Serre theory, i.e. the theory of groups acting on trees. The main result used for this step is the following theorem of Guirardel and Levitt. In everything that follows, we assume that graphs are simplicial and that group actions on graphs are simplicial and do not invert edges. A <i>morphism</i> of graphs is a continuous map that sends vertices to vertices and edges to edge paths.
+        The final step of the proof consists in upgrading homological coherence to coherence. While it is not known whether coherence and homological coherence are equivalent in general, Jaikin-Zapirain and Linton show that this is the case for a fairly general class of groups admitting a certain type of hierarchy terminating in coherent groups. The main results used for this step are Theorem 3.1 and its strengthening Proposition 3.2. In this section we will assume the reader is familiar with some Bass–Serre theory, i.e. the theory of groups acting on trees. In everything that follows, we assume that graphs are simplicial and that group actions on graphs are simplicial and do not invert edges. A <i>morphism</i> of graphs is a continuous map that sends vertices to vertices and edges to edge paths. 
     </p>
 
     <p>
-        <b>Theorem 3.1</b> (Guirardel–Levitt)<b>.</b> <i>Let \(G\) be a finitely presented group acting cocompactly on a tree \(\mathcal T\). There is a tree \(\mathcal S\) such that \(G\) acts cocompactly on \(\mathcal S\) with finitely generated vertex and edge stabilisers, and there is a \(G\)-equivariant graph morphism \(\mathcal S \to \mathcal T\).</i>
+        <b>Theorem 3.1</b> (<a href="https://arxiv.org/abs/1602.05139" target="_blank">Guirardel–Levitt</a>)<b>.</b> <i>Let \(G\) be a finitely presented group acting cocompactly on a tree \(\mathcal T\). There is a tree \(\mathcal S\) such that \(G\) acts cocompactly on \(\mathcal S\) with finitely generated vertex and edge stabilisers, and there is a \(G\)-equivariant graph morphism \(\mathcal S \to \mathcal T\).</i>
+    </p>
+
+    <p>
+        To promote homological coherence to coherence, Jaikin-Zapirain and Linton show that the finite presentability assumption on \(G\) can be weakened to being of type \(\mathrm{FP}_2(\mathbb Q)\). We will prove this below (assuming the result of Guirardel and Levitt), but first, let's see how it implies the Baumslag's conjecture.
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#combination" aria-expanded="false" aria-controls="combination"><b>Theorem 3.2</b> (Jaikin-Zapirain–Linton)<b>.</b> <i>Let \(G\) act on a tree with coherent vertex stabilisers. If \(G\) is homologically coherent, then \(G\) is coherent.</i></t>
+    </p>
+    <div class="collapse" id="combination">
+        <div class="card card-body">
+            <p>
+                <i>Proof.</i> Let \(H\) be a finitely generated subgroup of \(G\). Since \(H\) is finitely generated, there is an \(H\)-invariant subtree \(\mathcal T' \subseteq \mathcal T\). Since \(G\) is homologically coherent, \(H\) is of type \(\mathrm{FP}_2(\mathbb Q)\), and therefore there is a cocompact \(H\)-tree \(\mathcal S\) and an \(H\)-equivariant morphism \(\mathcal S \to \mathcal T'\) such that \(\mathcal S\) has finitely generated vertex and edge stabilisers. Each vertex stabiliser of \(H \curvearrowright \mathcal S\) is a subgroup of some vertex stabiliser of \(H \curvearrowright \mathcal T'\). But the vertex stabilisers of the latter action are coherent, so the vertex stabilisers of \(H \curvearrowright \mathcal S\) are finitely presented. In summary, we have shown that \(H\) acts cocompactly on a tree with finitely presented vertex stabilisers and finitely generated edge stabilisers. It is then a standard fact in Bass–Serre theory that \(H\) is finitely presented, as desired. <span style="float: right;">\(\square\)</span>
+            </p>
+        </div>
+    </div>
+
+    <p>
+        Coherence of one-relator groups is then an immediate consequence of Corollary 2.4 and the <a href="https://en.wikipedia.org/wiki/One-relator_group#Magnus%E2%80%93Moldavansky_method" target="_blank">Magnus hierarchy</a>.
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#onerelcoherent" aria-expanded="false" aria-controls="onerelcoherent"><b>Corollary 3.3.</b> <i>One-relator groups are coherent.</i></t>
+    </p>
+    <div class="collapse" id="onerelcoherent">
+        <div class="card card-body">
+            <p>
+                <i>Proof.</i> Let \(G = \langle S \mid r = 1 \rangle\) be a one-relator group, where \(r\) is a cyclically reduced word in the letters of the generating set \(S\). If \(r\) is non-trivial, then the Magnus hierarchy says that one of the two possibilities occurs:
+                <ol>
+                    <li>
+                        \(G\) is an HNN extension with base group a one-relator group \(G' = \langle S' \mid r' = 1 \rangle\), where \(r'\) is a word of shorter length than \(r\);
+                    </li>
+                    <li>
+                        \(G\) embeds into a one-relator group \(H\), and \(H\) is an HNN extension with base group \(H' = \langle S' \mid r' = 1\rangle\), where the length of \(r'\) is less than that of \(r\).
+                    </li>
+                </ol>
+                For the readers who are not familiar with HNN extensions, the first case implies that \(G\) acts on a tree such that each vertex stabiliser is isomorphic to \(G'\); this will be enough for us.
+            </p>
+            <p>
+                We argue by induction on the length of the relator \(r\). If the relator is of length zero, then \(G\) is free and is clearly coherent. Suppose that \(r\) is non-trivial. In the first case, \(G'\) is coherent by induction, and then \(G\) is coherent using Theorem 3.2. For the second case, we note that \(H'\) is coherent by induction, that \(H\) is coherent by Theorem 3.2, and therefore that \(G\) is coherent since it is a subgroup of a coherent group. <span style="float: right;">\(\square\)</span>
+            </p>
+        </div>
+    </div>
+
+    <p>
+        It only remains to prove the strengthening of Guirardel and Levitt's result. First we need a lemma.
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#bieristrebel" aria-expanded="false" aria-controls="bieristrebel"><b>Lemma 3.4</b> (Bieri–Strebel)<b>.</b> <i>A group \(G\) is of type \(\mathrm{FP}_2(\mathbb Q)\) if and only if there is a short exact sequence \[1 \to N \to H \to G \to 1\] such that \(H\) is finitely presented and \(N^{\mathsf{ab}} \otimes \mathbb{Q} = 0\).</i></t>
+    </p>
+    <div class="collapse" id="bieristrebel">
+        <div class="card card-body">
+            <p>
+                <i>Proof.</i> Let \(F\) be a free group, and let \(S \leqslant R\) be two normal subgroups of \(F\). There is a short exact sequence
+                \[
+                    0 \to [R,R]S/[R,R] \to R^{\mathsf{ab}} \to (R/S)^{\mathsf{ab}} \to 0,
+                \]
+                and \(F/R\) acts on each term of the sequence by conjugation, turning the exact sequence into an exact sequence of \(F/R\)-modules. Tensoring with \(\mathbb Q\) preserves exactness, and yields a short exact sequence of \(\mathbb Q[F/R]\)-modules. 
+                \[
+                    0 \to [R,R]S/[R,R] \otimes \mathbb Q \to R^{\mathsf{ab}} \otimes \mathbb Q \to (R/S)^{\mathsf{ab}} \otimes \mathbb Q \to 0.
+                \]
+                We will use this exact sequence in the proof of both implications. 
+            </p>
+            <p>
+                (\(\Rightarrow\)) Let \(G\) be of type \(\mathrm{FP}_2(\mathbb Q)\). Let \(F\) be a finitely generated free group mapping onto \(G\), and write \(G \cong F/R\) for some normal subgroup \(R\) of \(F\). It is a standard fact that the tensored relation module \(R^{\mathsf{ab}} \otimes \mathbb Q\) is finitely generated as a \(\mathbb Q[G]\)-module. We can take it to be generated by a finite set of elements of the form \(r[R,R] \otimes 1\), where each \(r\) is in \(R\). Let \(S\) be the normal subgroup of \(F\) generated by these \(r\)'s. There is a short exact sequence \[1 \rightarrow R/S \rightarrow F/S \rightarrow G \rightarrow 1\] and the map \[[R,R]S/[R,R] \otimes \mathbb Q \to R^{\mathsf{ab}} \otimes \mathbb Q\] is surjective by the definition of \(S\). Hence, \((R/S)^{\mathsf{ab}} \otimes \mathbb Q = 0\), as desired.
+            </p>
+            <p>
+                (\(\Leftarrow\)) Suppose there is a short exact sequence of the desired form. Let \(G = F/R\) and \(H = F/S\) for a finitely generated free group \(F\) and a pair of normal subgroups \(S \subseteq R\) such that \(S\) is finitely generated as a normal subgroup. By assumption, \((R/S)^{\mathsf{ab}} \otimes \mathbb Q = 0\), so 
+                \[
+                    [R,R]S/[R,R] \otimes \mathbb Q \to R^{\mathsf{ab}} \otimes \mathbb Q
+                \]
+                is an isomorphism. But then \(R^{\mathsf{ab}} \otimes \mathbb Q\) is finitely generated as a \(\mathbb Q[G]\)-module. <span style="float: right;">\(\square\)</span>
+            </p>
+        </div>
+    </div>
+
+    <p>
+        Leveraging Lemma 3.4, we can now upgrade Theorem 3.1.
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#GL" aria-expanded="false" aria-controls="GL"><b>Lemma 3.4</b> (Jaikin-Zapirain–Linton)<b>.</b> <i>Theorem 3.1 holds under the weaker assumption that \(G\) be of type \(\mathrm{FP}_2(\mathbb Q)\).</i></t>
+    </p>
+    <div class="collapse" id="GL">
+        <div class="card card-body">
+            <p>
+                <i>Proof.</i> Let \(N \hookrightarrow H \twoheadrightarrow G\) be a short exact sequence with \(H\) finitely presented and \(N^\mathsf{ab} \otimes \mathbb Q = 0\). The cocompact \(G\)-tree becomes a cocompact \(H\)-tree via \(H \rightarrow G\). Hence, there is a cocompact \(H\)-tree \(\mathcal S\) with finitely generated vertex and edge stabilisers mapping \(H\)-equivariantly to \(\mathcal T\).
+            </p>
+            <p>
+                Let \(v_1, \dots, v_n\) be a complete set of orbit representatives for \(H \curvearrowright \mathcal S\), and let \(H_1, \dots, H_n\) be their respective stabilisers in \(H\), and let \(N_i = N \cap H_i\) for \(i = 1, \dots, n\). Let \(K\) be the normal subgroup of \(H\) generated by the \(N_i\). We leave it as an exercise to prove that \(\mathcal S/K\) is a tree, and therefore that it is a cocompact \(H/K\)-tree.
+            </p>
+            <p>
+                Note that \(N/K\) acts freely on \(\mathcal S/K\), and therefore \(N/K\) is itself free (another standard fact in Bass–Serre theory). Since \(N^\mathsf{ab} \otimes \mathbb Q = 0\) and \(N^\mathsf{ab}\) maps onto \((N/K)^\mathsf{ab}\), it follows that \((N/K)^\mathsf{ab} \otimes \mathbb Q = 0\). But since \((N/K)^\mathsf{ab}\) is free, this means that \(N/K\) is trivial. So \(H/K \cong G\), meaning that \(\mathcal S\) is a cocompact \(G\)-tree.
+            </p>
+            <p>
+                The vertex and edge stabilisers of \(G \curvearrowright \mathcal S/K\) are finitely generated, since they are quotients of vertex and edge stabilisers of \(H \curvearrowright \mathcal S\), which are finitely generated. <span style="float: right;">\(\square\)</span>
+            </p>
+        </div>
+    </div>
+
+    <br>
+    <h4>4. Nonpositive immersions and previous work on coherence</h4>
+
+    <p>
+        The following definition is due to Dani Wise.
+    </p>
+    <p>
+        <b>Definition 4.1.</b> A combinatorial \(2\)-complex \(X\) has <i>nonpositive immersions</i> if for every \(2\)-complex \(Y\) and combinatorial immersion \(Y \looparrowright X\), either \(Y\) is contractible or \(\chi(Y) \leqslant 0\).
+    </p>
+    <p>
+        Wise introduced the nonpositive immersions property when studying coherence, and conjectured that fundamental groups of \(2\)-complexes with nonpositive immersions are coherent. Gromov apparently also suggested that the nonpositive immersions property could be implied to the vanishing of the second \(L^2\)-Betti number. We state the strongest form of the conjecture here, which also includes converse statements.
+    </p>
+    <p>
+        <b>Conjecture 4.2.</b> <i>Let \(G\) be a group of geometric dimension two. The following are equivalent:
+            <ol>
+                <li>\(G\) is coherent;</li>
+                <li>\(b_2^{(2)}(G) = 0\);</li>
+                <li>\(G\) admits a finite-index subgroup that is the fundamental group of a \(2\) complex with nonpositive immersions.</li>
+            </ol>
+        </i>
+    </p>
+    <p>
+        As far as I am aware, all implications in the above conjecture are open. As we have seen, Jaikin-Zapirain and Linton show that two-dimensional groups with vanishing second \(L^2\)-Betti number are homologically coherent, provided they satisfy the Atiyah conjecture (which is open, but known for several large classes of groups). They also show that if \(G = \pi_1(X)\) for a \(2\)-complex \(X\) with nonpositive immersions, then \(G\) is homologically coherent. Indeed, they show that if \(G\) is a group with nonpositive immersions, then every finitely generated subgroup of \(G\) has finite second \(L^2\)-Betti number. By examining the proof of Theorem 2.1, it is not hard to see that this is enough to establish homological coherence.
+    </p>
+    <p>
+        All this is fairly strong evidence that the implications (ii) \(\Rightarrow\) (i)  and (iii) \(\Rightarrow\) (i) could hold in general, or at least for very large classes of groups (such as groups satisfying the Atiyah conjecture). On the other hand, there is much less evidence that the converse statements hold, and I think that there should exist a coherent group with positive second \(L^2\)-Betti number. 
+    </p>
+    <p>
+        We conclude this post by discussing previous results on the coherence of one-relator groups. The following result was obtained independently by <a href="https://arxiv.org/abs/1410.2579" target="_blank">Helfer–Wise</a> and <a href="https://arxiv.org/abs/1410.2540" target="_blank">Louder–Wilton</a> in 2014. 
+    </p>
+    <p>
+        <b>Theorem 4.3.</b> <i>One-relator groups have nonpositive immersions.</i>
+    </p>
+    <p>
+        This was already enough to establish that one-relator groups have a weak form of homological coherence, namely that \(\mathrm{H}_2(H;\mathbb Q)\) is a finite-dimensional vector space for every finitely generated subgroup \(H\) of a one-relator group. It is possible to use the nonpositive immersions property to give a proof of one-relator group coherence that does not rely on the Atiyah conjecture. Instead, we use the fact that the group algebra of a torsion-free one-relator group \(G\) embeds into a division ring \(\mathcal D\) by <a href="https://www.sciencedirect.com/science/article/pii/0021869378902600" target="_blank">a 1978 result of Lewin and Lewin</a>. Jaikin-Zapirain and Linton show that \(\mathrm{H}_2(H;\mathcal D)\) is finite-dimensional as \(\mathcal D\)-vector space, which again is enough to conclude coherence by the proof of Theorem 2.1. The only reason the proof given above does not work using the Lewin–Lewin embedding is that we used Fact 2.3, which does not follow from the work of Lewin and Lewin. It is now known that the Lewin–Lewin embedding is the same as the one constructed by Jaikin-Zapirain and López-Álvarez (we prove this in <a href="https://arxiv.org/abs/2303.08165" target="_blank">my article with Pablo Sánchez-Peralta</a>). 
+    </p>
+    <p>
+        Many special cases of Baumslag's conjecture were known before Jaikin-Zapirain and Linton's result.
+    </p>
+    <p>
+        <b>Theorem 4.4</b> (<a href="https://arxiv.org/abs/1805.11976" target="_blank">Louder–Wilton</a>, <a href="https://www.cambridge.org/core/journals/journal-of-the-institute-of-mathematics-of-jussieu/article/coherence-local-indicability-and-nonpositive-immersions/B835401E7FFE92319176BBA8F3E87492" target="_blank">Wise</a>)<b>.</b> <i>One-relator groups with torsion are coherent.</i>
+    </p>
+    <p>
+        There is also a strengthening of the nonpositive immersions property called <i>negative immersions</i>, whose definition I will leave to the imagination of the reader. Many one-relator groups have negative immersions.
+    </p>
+    <p>
+        <b>Theorem 4.5</b> (<a href="https://arxiv.org/abs/2107.08911" target="_blank">Louder–Wilton</a>)<b>.</b> <i>One-relator groups with negative immersions are coherent.</i>
+    </p>
+    <p>
+        Much more information on all of this can be found in <a href="https://arxiv.org/abs/2501.18306" target="_blank">a recent survey</a> on one-relator groups by Nyberg-Brodda and Linton.
     </p>
 </body>
