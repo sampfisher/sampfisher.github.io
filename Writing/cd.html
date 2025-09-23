@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    .bord {
+        display: table;
+        padding: 3px;
+        border-radius: 10px;
+        border: 0.8px solid black;
+        background-origin: border-box;
+        background-color: #fcf3cb;
+        display: none;
+    }
+    .card-body { background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    .collapsing.panel {background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    /* container */
+    .right-sidebar {
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .right-sidebar > * {
+        width:100%;
+        padding:1rem;
+    }
+    @media (min-width:950px) {
+        .right-sidebar > *:nth-child(1) {
+            width:calc(75%);
+        }
+        .right-sidebar > *:nth-child(2) {
+            width:calc(25%);
+        }
+    }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    t {
+        color: #034682;
+    }
+    t:hover {
+        color:  #a93226;
+        transition: 0.3s;
+    }
+    a:link {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:hover {
+        color:  #a93226;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
+        font-style: italic, oblique;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
+        font-weight: bold;
+        font-style: italic, oblique;
+    }
+    body {
+        background-color:#e1edff;
+        padding-right: 10%;
+        padding-left: 10%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        max-width: 800px;
+        font-family: "Computer Modern", sans-serif;
+        text-align: justify;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    ol {list-style-type: none;}
+    li:before {content: "(" counter(section, lower-roman) ") ";}
+    li { counter-increment: section;}
+    .topnav {
+        float: right;
+    }
+    .topnav a {
+        padding-left: 15px;
+    }
+</style>
+
+<div class="topnav" id="myTopnav">
+    <a href="../index.html">Home</a>
+    <a href="../math.html">Blog</a>
+</div>
+
+<body>
+    <h3>The cohomological dimension of \(\operatorname{ker}(G \twoheadrightarrow \mathbb Z)\)</h3>
+
+    <p>
+        In <a href="https://arxiv.org/abs/2403.18758">this article</a>, I showed that the vanishing of the top-dimensional Novikov homology of a finite type group \(G\) and an epimorphism \(\chi \colon G \rightarrow \mathbb Z\) implies that \(\mathrm{cd}(\ker \chi) = \mathrm{cd}(G) - 1\). In fact, my original proof was under the additional assumption that \(G\) be <i>residually finite rationally solvable</i> (or RFRS, for short), since the main application of this criterion was towards showing that a RFRS group of cohomological dimension at most two is virtually free-by-cyclic if and only if it has vanishing second \(L^2\)-Betti number. This post will not be about \(L^2\)-Betti numbers, nor RFRS groups, so we will not define them here. Andrei Jaikin-Zapirain later communicated a simplification of the Novikov cohomology argument, which removed the RFRS hypothesis. In this post I will give the proof of this result once again, and also prove the converse, which is not included in the original article. As a disclaimer, this post will assume a fair amount of knowledge about group cohomology.
+    </p>
+
+    <h4>The Novikov ring and Novikov homology</h4>
+
+    <p>
+        Let \(G\) be a group, and let \(\chi \colon G \rightarrow \mathbb R\) be a group homomorphism (where the group law on \(\mathbb R\) is usual addition). Such maps are often called <i>characters</i>. The <i>Novikov ring</i> associated to this data is the ring consisting of all formal series \(\sum_{g \in G} n_g g\) of group elements with integer coefficients subject to the condition that \(\{g : n_g \neq 0\} \cap \chi^{-1}(]-\infty,t])\) be finite for all \(t \in \mathbb R\). It is denoted by \(\mathbb Z[G]_\chi\). In other words, \(\mathbb Z[G]_\chi\) is the ring of formal series which are finitely supported below every height. One needs to check that this is indeed a ring, with the operations of addition and multiplication naturally extending those on the group ring \(\mathbb Z[G]\).
+    </p>
+
+    <p>
+        The Novikov homology of a group \(G\) and a character \(\chi\) refers to the homology modules \(\mathrm{H}_i(G;\mathbb Z[G]_\chi)\). Here \(\mathbb Z[G]_\chi\) is being considered as a \(\mathbb Z[G]\)-bimodule via the inclusion \(\mathbb Z[G] \hookrightarrow \mathbb Z[G]_\chi\).
+        
+        Novikov homology encodes the finiteness properties of the kernel of \(\chi\) via Sikorav's theorem, which in its most basic form states the following:
+    </p>
+
+    <p>
+        <b>Theorem</b> (Sikorav's theorem)<b>.</b> <i>Let \(G\) be a finitely generated group and let \(\chi \colon G \to \mathbb Z\) be a surjective homomorphism. Then \(\ker \chi\) is finitely generated if and only if \(\operatorname{H}_1(G;\mathbb Z[G]_\chi) = \operatorname{H}_1(G;\mathbb Z[G]_{-\chi}) = 0\).</i>
+    </p>
+
+    <p>
+        Sikorav's theorem has many extensions. Vanishing of higher Novikov homology modules is equivalent to the kernel having higher (homological) finiteness properties, and there are also versions of the theorem for chain complexes of free \(G\)-modules. The theorem also holds when replacing \(\mathbb Z\) by an arbitrary ring \(R\). In this sense, Sikorav's theorem is very robust. The proofs of all these results are somewhat spread throughout the literature; good resources are Sikorav's 1987 thesis (which is unfortunately somewhat difficult to access), Bieri–Schweitzer, Bieri–Renz, and Bieri–Neumann–Strebel.
+    </p>
+
+    <h4>Novikov cohomology</h4>
+
+    <p>
+        It turns out the Novikov cohomology is also useful for studying the kernels of characters, but this time we must look at the top-dimensional modules. Recall that a group \(G\) is of type \(\mathrm{FP}\) if the trivial \(G\)-module \(\mathbb Z\) admits a projective resolution \[0 \to P_n \to \cdots \to P_1 \to P_0 \to \mathbb Z \to 0,\] where each of the modules \(P_i\) is finitely generated. Groups with compact classifying spaces (such as fundamental groups of compact aspherical manifolds) provide natural source of examples of groups of type \(\mathrm{FP}\). It is immediate, from the definition that groups of type \(\mathrm{FP}\) are of finite cohomological dimension. Our aim is to prove the following theorem, which we in some sense (which can be made precise) we think of as the dual of Sikorav's theorem.
+    </p>
+    
+    <p>
+        <b>Theorem.</b> <i>Let \(G\) be a group of type \(\mathrm{FP}\) and suppose that \(\chi \colon G \rightarrow \mathbb Z\) is an epimorphism. Let \(n = \mathrm{cd}(G)\). Then \(\mathrm{cd}(\ker \chi) = n - 1\) if and only if \(\operatorname{H}^n(G;\mathbb Z[G]_\chi) = \operatorname{H}^n(G;\mathbb Z[G]_{-\chi}) = 0\)</i>
+    </p>
+
+    <p>
+        The key ingredient is a short exact sequence relating Novikov cohomology to the cohomology of \(\ker \chi\). Let \(N = \ker \chi\), and let \(M\) be an arbitrary \(\mathbb Z[N]\)-module. Let \(M * G/N_\chi\) by the module of formal series of the form \(\sum_{i \geqslant n}^\infty m_i t^i\), where \(m_i \in M\) for all \(i\), where \(t \in G\) is an element mapping to \(1 \in \mathbb Z\) under \(\chi\). It is not hard to see that \(M * G/N_\chi\) is a \(\mathbb Z[G]_\chi\)-module. There is a short exact sequence 
+        \[  
+            0 \to M \otimes_{\mathbb Z[N]} \mathbb Z[G] \to M * G/N_\chi \oplus M * G/N_{-\chi} \to \prod_{i \in \mathbb Z} M t^i \to 0
+        \]
+        of \(\mathbb Z[G]\)-modules. The relevance of this short exact sequence will come from the long exact sequence in \(\operatorname{H}^i(G;-)\) it induces, as well as from the fact that \(\operatorname{H}^i(G;\prod_{i \in \mathbb Z} M t^i) \cong \operatorname{H}^i(N;M)\) (this is just Shapiro's lemma).
+    </p>
+
+    <p>
+        We will also need the following lemma.
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#Lemma" aria-expanded="false" aria-controls="Lemma"><b>Lemma.</b> <i>If \(M\) is a non-zero module over \(\mathbb Z[G]_\chi\), then \(M\) is uncountable.</i></t>
+    </p>
+    <div class="collapse" id="Lemma">
+        <div class="card card-body">
+            <p>
+                <i>Proof.</i> Let \(t \in G\) be such that \(\chi(t) = 1\). An element \(x\) of \(\mathbb Z[G]_\chi\) can be expressed uniquely as a series \(\sum_{i \geqslant n} x_i t^i\), where \(x_i \in \mathbb Z[N]\) for all \(i\) and \(x_n \neq 0\). The coefficient \(x_n\) is called the leading coefficient of \(\mathbb Z[N]\). It is not hard to check that \(x\) is a unit of the Novikov ring if and only if \(x_n\) is a unit of \(\mathbb Z[N]\) (hint: the inverse of \(1 - A\) is \(1 + A + A^2 + \cdots\) whenever the support of \(A\) maps to the set positive integers under \(\chi\)).
+            </p>
+            <p>
+                Consider the set \(S\) of elements of \(\mathbb Z[G]_\chi\) which have the form \(\sum_{i \geqslant 0} \varepsilon_i t^i\), where \(\varepsilon_i \in \{0,1\}\) for each \(i\). Notice that if \(s_0, s_1 \in S\) are distinct elements, then \(s_1 - s_0\) is a unit. Moreover, \(S\) is uncountable. Let \(m \in M\) be non-zero. We will prove that the map \(S \to M\) given by \(s \mapsto sm\) is injective. Indeed, if \(s_0m = s_1m\), then \((s_1 - s_0)m = 0\). Then \(s_0 = s_1\), because otherwise we would have \(m = (s_1-s_0)^{-1}(s_1-s_0)m = 0\), a contradiction. <span style="float: right;">\(\square\)</span>
+            </p>
+        </div>
+    </div>
+
+    <p>
+        We are now ready to prove the main result.
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#Proof" aria-expanded="false" aria-controls="Proof"><i>Proof of the theorem.</i></t>
+    </p>
+    <div class="collapse" id="Proof">
+        <div class="card card-body">
+            <p>
+                We begin by proving the direction of the theorem which has already appeared. That is, we want to show that vanishing top-dimensional Novikov homology implies that the cohomological dimension of the kernel drops. Let \(M\) be an arbitrary \(\mathbb Z[N]\)-module. The goal is to prove that \(\operatorname{H}^n(N;M) = 0\). By Proposition VIII.6.8 in Brown's <i>Cohomology of Groups</i>, we have \[\operatorname{H}^n(G;M * G/N_\chi) \cong \operatorname{H}^n(G;\mathbb Z[G]_\chi)\otimes_{\mathbb Z[G]_\chi} M * G/N_\chi = 0,\] and similarly when replacing \(\chi\) by \(-\chi\). The long exact sequence in cohomology associated to the short exact sequence discussed above yields the exact sequence 
+                \[
+                    \operatorname{H}^n(G;M * G/N_\chi \oplus M * G/N_{-\chi}) \to \operatorname{H}^n(N;M) \to \operatorname{H}^{n+1}(G; M \otimes_{\mathbb Z[N]} \mathbb Z[G]).
+                \]
+                We just saw that the left module ist zero. The right module is also zero for dimension reasons. Hence, the middle module is also zero, which is what we wanted to show.
+            </p>
+            <p>
+                Now assume \(\mathrm{cd}(N) = n-1\). Letting \(M = \mathbb Z[N]\), the long exact sequence in cohomology associated to the short exact sequence yields the exact sequence
+                \[
+                    \operatorname{H}^n(G; \mathbb Z[G]) \rightarrow \operatorname{H}^n(G; \mathbb Z[G]_\chi \oplus \mathbb Z[G]_{-\chi}) \to 0.
+                \]
+                Since \(G\) is of type \(\mathrm{FP}\), it is finitely generated, and in particular countable. Hence, \(\operatorname{H}^n(G; \mathbb Z[G])\) is countable. The exact sequence above then implies
+                \[
+                    \operatorname{H}^n(G; \mathbb Z[G]_\chi \oplus \mathbb Z[G]_{-\chi}) \cong \operatorname{H}^n(G; \mathbb Z[G]_\chi) \oplus \operatorname{H}^n(G; \mathbb Z[G]_{-\chi})
+                \]
+                 is also countable (being the image of a countable module). By the lemma, it must actually be zero, which concludes the proof. <span style="float: right;">\(\square\)</span>
+            </p>
+        </div>
+    </div>
+
+    <p>
+        I will be adding this previous argument to a paper in progress, as well as some other arguments how to sow that the cohomological dimension of a co-Abelian kernel drops by the rank of the Abelian quotient. We will also show how similar arguments can yield new proofs of Ranicki's criterion, as well as one direction of Sikorav's theorem (usually considered the less trivial direction, namely that vanishing implies finiteness).
+    </p>
+</body>
