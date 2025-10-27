@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    .bord {
+        display: table;
+        padding: 3px;
+        border-radius: 10px;
+        border: 0.8px solid black;
+        background-origin: border-box;
+        background-color: #fcf3cb;
+        display: none;
+    }
+    .card-body { background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    .collapsing.panel {background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    /* container */
+    .right-sidebar {
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .right-sidebar > * {
+        width:100%;
+        padding:1rem;
+    }
+    @media (min-width:950px) {
+        .right-sidebar > *:nth-child(1) {
+            width:calc(75%);
+        }
+        .right-sidebar > *:nth-child(2) {
+            width:calc(25%);
+        }
+    }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    t {
+        color: #034682;
+    }
+    t:hover {
+        color:  #a93226;
+        transition: 0.3s;
+    }
+    a:link {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:hover {
+        color:  #a93226;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
+        font-style: italic, oblique;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
+        font-weight: bold;
+        font-style: italic, oblique;
+    }
+    body {
+        background-color:#e1edff;
+        padding-right: 10%;
+        padding-left: 10%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        font-family: "Computer Modern", sans-serif;
+        text-align: justify;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    ol {list-style-type: none;}
+    li:before {content: "(" counter(section, lower-roman) ") ";}
+    li { counter-increment: section;}
+    .topnav {
+        float: right;
+    }
+    .topnav a {
+        padding-left: 15px;
+    }
+</style>
+
+<div class="topnav" id="myTopnav">
+    <a href="../index.html">Home</a>
+    <a href="../math.html">Blog</a>
+</div>
+
+<body>
+    <h2>The Eilenberg–Watts Theorem</h2>
+
+    <p>
+        The topic of this post is the Eilenberg–Watts Theorem, which is a fundamental and handy result identifying functors between module categories that are additive, right exact, and commute with arbitrary direct sums. Our main source is <a href="https://www.ams.org/journals/proc/1960-011-01/S0002-9939-1960-0118757-0/" target="_blank">Watt's 1960 article</a> (see also <a href="https://www.informaticsjournals.co.in/index.php/jims/article/view/16908" target="_blank">Eilenberg's article</a> from around the same time). As both Eilenberg and Watts separately note, the functors \(\otimes\) and \(\mathrm{Hom}\) play central roles in homological algebra, and their theorem partly explains why this is.
+    </p>
+
+    <p>
+        We will consider functors of the form \(F \colon \mathsf{Mod}_R \to \mathsf{Mod}_S\), where \(R\) and \(S\) are rings, \(\mathsf{Mod}_R\) is the category of right \(R\)-modules, and \(\mathsf{Ab}\) is the category of Abelian groups. The functor \(F\) is <i>right exact</i> if whenever \(A \to B \to C \to 0\) is an exact sequence of right \(R\)-modules, then \(F(A) \to F(B) \to F(C) \to 0\) is also exact. It is not so hard to see that a right exact functor commutes with finite direct sums. Indeed, if \(A\) and \(B\) are \(R\)-modules, then \(F(A \oplus B)\) maps surjectively onto \(F(A)\) and \(F(B)\) by right exactness. Moreover, both projections split by functoriality, so \(F(A \oplus B) \cong F(A) \oplus F(B)\). In fact, right exact functors are characterised as exactly those commuting with finite colimits (of which finite direct sums are a special case).
+    </p>
+
+    <p>
+        In general, it is not the case that right exact functors commute with arbitrary direct sums (e.g. infinite direct products do not). Given an \(R\)-\(S\)-bimodule \(M\), the functor \[- \otimes_R M \colon \mathsf{Mod}_R \to \mathsf{Mod}_S, \qquad N \mapsto N \otimes_R M\] is a natural example of a right exact additive functor that preserves arbitrary direct sums. The Eilenberg–Watts Theorem says that this is the only example. As Watts notes in 
+    </p>
+
+    <p>
+        <b>Theorem</b> (Eilenberg, Watts)<b>.</b> <i>If \(F \colon \mathsf{Mod}_R \to \mathsf{Mod}_S\) is an additive right exact functor that preserves arbitrary direct sums, then there is a natural isomorphism \[F(-) \ \cong \ - \otimes_R F(R),\] where \(R\) is viewed as a right module over itself.</i>
+    </p>
+
+    <p>
+        Before proving the theorem, we explain how \(F(R)\) is an \(R\)-\(S\)-bimodule. The right \(S\)-module structure is from the definition of \(F\); to see the left \(R\)-module structure, observe that every element \(r\in R\) defines a map \(\mu_r \colon R \rightarrow R\) by \(\mu_r(x) = rx\). So \(\mu_x\) is a right \(R\)-module map. If \(z \in F(R)\), then putting \(r \otimes z := F(\mu_r)(z)\) defines the left \(R\)-module structure on \(F(R)\).
+    </p>
+    
+    <p>
+        <t data-toggle="collapse" data-target="#Proof" aria-expanded="false" aria-controls="Proof"><i>Proof of the Eilenberg–Watts Theorem.</i></t>
+    </p>
+    <div class="collapse" id="Proof">
+        <div class="card card-body">
+            <p>
+                Let \(M\) be an arbitrary right \(R\)-module and fix a presentation \(\bigoplus_I R \rightarrow \bigoplus_J R \rightarrow M \rightarrow 0\) (this is just a right exact sequence where the two leftmost modules are free; every module has a presentation). By right exactness and the fact that \(F\) commutes with direct sums, we obtain the right exact sequence \[\bigoplus_J F(R) \rightarrow \bigoplus_I F(R) \to F(M) \to 0.\] On the other hand, tensoring the presentation with \(F(R)\) yields the right exact sequence \[\bigoplus_J F(R) \rightarrow \bigoplus_I F(R) \to M \otimes_R F(R) \to 0\] where we are using again that tensoring is right exact and commutes with arbitrary direct sums.
+            </p>
+            <p>
+                The next step is to construct a map \(M \otimes_R F(R) \to F(M)\), i.e. we need to decide where to send an elementary tensor \(m \otimes x \in M \otimes_R F(R)\). As with most general theorems in category theory, there is only one way to proceed. For every element \(m \in M\), there is a right \(R\)-module map \(\nu_m \colon R \rightarrow M\) given by \(\rho_m(r) = mr\). The map is then given by \[m \otimes x \mapsto F(\rho_m)(x).\] We leave it as an exercise—which really only involves running through definitions—to check that this map yields a commutative diagram
+                \[\begin{CD}
+                        \bigoplus_J F(R) @>>> \bigoplus_I F(R) @>>> M \otimes_R F(R) @>>> 0\\
+                        @VVV @VVV @VVV \\
+                        \bigoplus_J F(R) @>>> \bigoplus_I F(R) @>>> F(M) @>>> 0
+                \end{CD}\]
+                where the two leftmost vertical maps are isomorphisms. By the <a href="https://es.wikipedia.org/wiki/Lema_de_los_cinco" target="_blank">Five Lemma</a>, \(M \otimes_R F(R) \to F(M)\) is an isomorphism. We leave it to the reader to verify that this is really a natural isomorphism of functors (i.e. that it commutes with morphisms in \(\mathsf{Mod}_R\)). This should come as no surprise, since the definition of the isomorphism \(M \otimes_R F(R) \cong F(M)\) is very natural (in the informal sense). <span style="float: right;">\(\square\)</span>
+            </p>
+        </div>
+    </div>
+
+    <p>
+        The Eilenberg–Watts Theorem has the following quite useful consequence in group cohomology. Note that it is proved in Proposition VIII.6.8 of Brown's book <i>Cohomology of Groups</i> under the stronger assumption that \(G\) be of type \(\mathrm{FP}\) (this condition turns out to be equivalent to cohomology preserving direct sums in all degrees).
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#cor1" aria-expanded="false" aria-controls="cor"><b>Corollary.</b> <i>Let \(G\) be a group of cohomological dimension \(n\) and suppose that \(\mathrm{H}^n(G;-) \ \colon \ \mathsf{Mod}_{\mathbb Z[G]} \to \mathsf{Ab}\) commutes with direct sums. Then \[\mathrm{H}^n(G;M) \ \cong \ M \otimes_{\mathbb Z[G]} \mathrm{H}^n(G;\mathbb Z[G])\] for all \(\mathbb Z[G]\)-modules \(M\). In particular, \(\mathrm{H}^n(G;\mathbb Z[G])\) is finitely presented (and even more in particular finitely generated) as a \(\mathbb Z[G]\)-module.</i></t>
+    </p>
+    <div class="collapse" id="cor1">
+        <div class="card card-body">
+            <p>
+                Given a short exact sequence of \(G\)-modules \(0 \to M_0 \to M_1 \to M_2 \to 0\), there is a long exact sequence in cohomology 
+                \[
+                    \cdots \to \mathrm{H}^i(G;M_0) \to \mathrm{H}^i(G;M_1) \to \mathrm{H}^i(G;M_2) \to \mathrm{H}^{i+1}(G;M_0) \to \cdots.
+                \]
+                In particular, \(\mathrm{H}^n(G;M_1) \to \mathrm{H}^n(G;M_2)\) is surjective, which proves that \(\mathrm{H}^n(G;-)\) is right exact. The Eilenberg–Watts Theorem implies \[\mathrm{H}^n(G;M) \ \cong \ M \otimes_{\mathbb Z[G]} \mathrm{H}^n(G;\mathbb Z[G]).\]
+            </p>
+            <p>
+                Group cohomology commutes with direct products; this is because \(\mathrm{H}^i(G;-)\) is the \(i\)th derived functor of \(\mathrm{Hom}_{\mathbb Z[G]}(\mathbb Z,-)\), and the latter functor commutes with direct products. From the previous paragraph, it follows that \(- \otimes_{\mathbb Z[G]} \mathrm{H}^n(G;\mathbb Z[G])\) commutes with direct products. However, it is a general fact that the functor \(- \otimes_R M\) preserves direct products if and only if \(M\) is finitely presented; hence, \(\mathrm{H}^n(G;\mathbb Z[G])\) is finitely presented. <span style="float: right;">\(\square\)</span>
+            </p>
+        </div>
+    </div>
+
+    <p>
+        <i>Remark.</i> (1) As was hinted at in the first paragraph of the post, the full Eilenberg–Watts Theorem also has a dual statement involving Hom functors. Namely, if \(F \colon \mathsf{Mod}_R \to \mathsf{Mod}_S\) is a left exact additive functor that preserves direct products, then there is a natural isomorphism \[F(-) \ \cong \ \mathrm{Hom}_R(F(R),-).\] More succinctly, Hom functors are the only left exact (additive) functors preserving direct products. The proof is dual. There is even a version which identifies \(\mathrm{Hom}_{R}(-,M)\) as the only left exact contravariant functor that converts direct sums into direct products (see Watts).<br>
+
+        (2) The Eilenberg–Watts Theorem holds in very general higher category theory contexts that I do not know anything about (see the <a href="https://ncatlab.org/nlab/show/Eilenberg-Watts+theorem" target="_blank">nLab</a>).
+    </p>
+</body>
