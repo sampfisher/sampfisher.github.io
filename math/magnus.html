@@ -168,7 +168,7 @@
     </p>
 
     <p>
-        <t data-toggle="collapse" data-target="#embed" aria-expanded="false" aria-controls="embed"><b>Lemma 2.</b> <i>The Magnus map \(\mu_X\) is injective.</i></t>
+        <t data-toggle="collapse" data-target="#embed" aria-expanded="false" aria-controls="embed"><b>Theorem 2.</b> <i>The Magnus map \(\mu_X\) is injective.</i></t>
     </p>
     <div class="collapse" id="embed">
         <div class="card card-body">
@@ -194,7 +194,7 @@
     </p>
     
     <p>
-        <t data-toggle="collapse" data-target="#RTFN" aria-expanded="false" aria-controls="RTFN"><b>Lemma 3.</b> <i>The subgroup \(1 + \omega_X\) of \(U_X\) is residually torsion-free nilpotent.</i></t>
+        <t data-toggle="collapse" data-target="#RTFN" aria-expanded="false" aria-controls="RTFN"><b>Theorem 3.</b> <i>The subgroup \(1 + \omega_X\) of \(U_X\) is residually torsion-free nilpotent.</i></t>
     </p>
     <div class="collapse" id="RTFN">
         <div class="card card-body">
@@ -219,7 +219,7 @@
     </p>
     <div class="collapse" id="free_RTFN">
         <div class="card card-body">
-            <i>Proof.</i> We first prove that subgroups of residually torsion-free nilpotent groups are residually torsion-free nilpotent. Suppose \(G\) is a residually torsion-free nilpotent group and \(H \leqslant G\) is a subgroup. If \((G_n)_{n\in\mathbb N}\) is a chain of subgroups witnessing the fact that \(G\) is residually torsion-free nilpotent, then the chain \((H \cap G_n)_{n\in\mathbb N}\) witnesses the residual torsion-free nilpotence of \(H\). By <a href="#embed">Lemma 2</a>, the free group \(F(S)\) is isomorphic to a subgroup of \(1 + \omega_X\) and therefore is itself residually torsion-free nilpotent. Since \(S\) is arbitrary, we conclude that free groups are residually torsion-free nilpotent. <span style="float: right;"> \(\square\)</span>
+            <i>Proof.</i> We first prove that subgroups of residually torsion-free nilpotent groups are residually torsion-free nilpotent. Suppose \(G\) is a residually torsion-free nilpotent group and \(H \leqslant G\) is a subgroup. If \((G_n)_{n\in\mathbb N}\) is a chain of subgroups witnessing the fact that \(G\) is residually torsion-free nilpotent, then the chain \((H \cap G_n)_{n\in\mathbb N}\) witnesses the residual torsion-free nilpotence of \(H\). By <a href="#embed">Theorem 2</a>, the free group \(F(S)\) is isomorphic to a subgroup of \(1 + \omega_X\) and therefore is itself residually torsion-free nilpotent by <a href="#RTFN">Theorem 3</a>. Since \(S\) is arbitrary, we conclude that free groups are residually torsion-free nilpotent. <span style="float: right;"> \(\square\)</span>
         </div>
     </div>
 
@@ -244,7 +244,7 @@
             \[
                 \mathbb Z\langle\!\langle X \rangle\!\rangle \to \mathbb Z\langle\!\langle X \rangle\!\rangle/\omega_X \to (\mathbb Z/p^k \langle X \rangle)/\omega_{X,p}^n
             \]
-            is a finite \(p\)-group (viewed as a multiplicative group), where the second map is reduction of coefficients modulo \(p^k\). It is easy to see that for every element \(f \in \mathbb Z\langle\!\langle X \rangle\!\rangle\), there are integers \(n\) and \(k\) such that \(f\) survives under the above composition. It thus follows that \(1 + \omega_X\) is residually \(p\)-finite. But subgroups of residually \(p\)-finite groups are residually \(p\)-finite, so \(F(S)\) is residually \(p\)-finite by <a href="#embed">Lemma 2</a>. <span style="float: right;"> \(\square\)</span>
+            is a finite \(p\)-group (viewed as a multiplicative group), where the second map is reduction of coefficients modulo \(p^k\). It is easy to see that for every element \(f \in \mathbb Z\langle\!\langle X \rangle\!\rangle\), there are integers \(n\) and \(k\) such that \(f\) survives under the above composition. It thus follows that \(1 + \omega_X\) is residually \(p\)-finite. But subgroups of residually \(p\)-finite groups are residually \(p\)-finite, so \(F(S)\) is residually \(p\)-finite by <a href="#embed">Theorem 2</a>. <span style="float: right;"> \(\square\)</span>
         </div>
     </div>
 
@@ -262,7 +262,7 @@
     <div class="collapse" id="order">
         <div class="card card-body">
             <p>
-                <i>Proof.</i> As discussed above, we will prove that \(1 + \omega_X\) is orderable, from which the theorem follows by <a href="#embed">Lemma 2</a>. Put an arbitrary total order \(\prec_m\) on the elements of \(X\). We extend \(\prec_m\) to all monomials as follows: let \(m_1\) and \(m_2\) be monomials in the letters \(X\). If the degree of \(m_1\) is less than the degree of \(m_2\), we declare \(m_1 \prec_m m_2\). Now suppose \(m_1\) and \(m_2\) have equal degree \(n\) and write \(m_1 = x_1 x_2 \cdots x_n\) and \(m_2 = y_1 y_2 \cdots y_n\) where \(x_i, y_i \in X\) for all \(i\). If \(m_1 \neq m_2\), then there is a minimal index \(i\) such that \(x_i \neq y_i\). Put \(m_1 \prec_m m_2\) if and only if \(x_i \prec_m y_i\).
+                <i>Proof.</i> As discussed above, we will prove that \(1 + \omega_X\) is orderable, from which the theorem follows by <a href="#embed">Theorem 2</a>. Put an arbitrary total order \(\prec_m\) on the elements of \(X\). We extend \(\prec_m\) to all monomials as follows: let \(m_1\) and \(m_2\) be monomials in the letters \(X\). If the degree of \(m_1\) is less than the degree of \(m_2\), we declare \(m_1 \prec_m m_2\). Now suppose \(m_1\) and \(m_2\) have equal degree \(n\) and write \(m_1 = x_1 x_2 \cdots x_n\) and \(m_2 = y_1 y_2 \cdots y_n\) where \(x_i, y_i \in X\) for all \(i\). If \(m_1 \neq m_2\), then there is a minimal index \(i\) such that \(x_i \neq y_i\). Put \(m_1 \prec_m m_2\) if and only if \(x_i \prec_m y_i\).
             </p>
 
             <p>
@@ -294,11 +294,11 @@
     </p>
     
     <p>
-        <b>The Kaplansky Conjectures.</b> <i>Let \(\mathbb K\) be a field and let \(G\) be a torsion-free group. Then
+        <b>The Kaplansky Conjectures.</b> <i>Let \(\mathbb K\) be a field and let \(G\) be a torsion-free group. Then</i>
         <ol>
-            <li>\(\mathbb K[G]\) has no non-trivial units, i.e. all its units are of the form \(\lambda g\) for some \(\lambda \in \mathbb K \smallsetminus \{0\}\) and \(g \in G\),</li>
-            <li>\(\mathbb K[G]\) is a domain;</li>
-            <li>\(\mathbb K[G]\) as no non-trivial idempotents, i.e. if \(x^2 = x\), then either \(x = 1\) or \(x = 0\);</li>
+            <li><i>\(\mathbb K[G]\) has no non-trivial units, i.e. all its units are of the form \(\lambda g\) for some \(\lambda \in \mathbb K \smallsetminus \{0\}\) and \(g \in G\); </i></li>
+            <li><i>\(\mathbb K[G]\) is a domain;</i></li>
+            <li><i>\(\mathbb K[G]\) as no non-trivial idempotents, i.e. if \(x^2 = x\), then either \(x = 1\) or \(x = 0\);</i></li>
             <li>\(\mathbb K[G]\) is directly finite, i.e. if \(xy = 1\), then \(yx = 1\).</li>
         </ol></i>
     </p>
@@ -310,4 +310,56 @@
     <p>
         <b>The Stable Finiteness Conjecture.</b> <i>Let \(G\) be any group. Then \(\mathbb K[G]\) is stably finite, meaning that if \(A\) and \(B\) are any \(n \times n\) matrices over \(\mathbb K[G]\) such that \(AB\) is the identity matrix, then \(BA\) is the identity matrix.</i> 
     </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#Kaplansky" aria-expanded="false" aria-controls="Kaplansky"><b>Theorem 7.</b> <i>Let \(F\) be a free group and \(\mathbb K\) be a field. The group algebra \(\mathbb K[F]\) satisfies the Kaplansky Conjectures.</i></t>
+    </p>
+    <div class="collapse" id="Kaplansky">
+        <div class="card card-body">
+            <p>
+                <i>Proof.</i> We begin by proving the first of the Kaplansky Conjectures on the structure of units in \(\mathbb K[F]\). Let \(a =\alpha_1 g_1 + \cdots + \alpha_m g_m\) and \(b = \beta_1 h_1 + \cdots + \beta_n h_n\) be two elements of \(\mathbb K[F]\) such that \(ab = 1\), and moreover suppose that \(\alpha_i \neq 0\) and \(\beta_i \neq 0\) for all appropriate \(i\). By <a href="#order">Theorem 6</a>, there exists a total bi-invariant order \(\prec\) on \(F\). Without loss of generality, we can also assume that \(g_1 \preccurlyeq \cdots \preccurlyeq g_m\) and \(h_1 \preccurlyeq \cdots \preccurlyeq h_n\). Suppose that \(g_1 \neq g_m\). Then \(g_1 h_1\) and \(g_m h_n\) both appear in the product \(ab\) with non-zero coefficients \(\alpha_1\beta_1\) and \(\alpha_m\beta_n\) respectively (note we are using the invariance of \(\prec\) to conclude that \(g_1h_1 \neq g_mh_n\)). But this contradicts \(ab = 1\), so we must have \(m = 1\). This proves Kaplansky Conjecture (i).
+            </p>
+            
+            We have already mentioned that (i) \(\Rightarrow\) (ii) \(\Rightarrow\) (iii) \(\Rightarrow\) (iv), but that the first implication (i) \(\Rightarrow\) (ii) is non-trivial. Thankfully, a very similar argument to the one in the paragraph above yields (ii) as well; we leave this to the reader. <span style="float: right;"> \(\square\)</span>
+        </div>
+    </div>
+
+    <p>
+        One can prove something stronger than (ii), which is that \(\mathbb K[F]\) embeds into a division ring. We note that the following is also open.
+    </p>
+    
+    <p>
+        <b>Conjecture.</b> <i>Let \(\mathbb K\) be a field and let \(G\) be a torsion-free group. Then \(\mathbb K[G]\) embeds into a division ring.</i>
+    </p>
+
+    <p>
+        The following result holds for any orderable group. The proof, which we only sketch, is due to Malcev and Neumann, independently.
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#div_ring" aria-expanded="false" aria-controls="div_ring"><b>Theorem 8.</b> <i>If \(\mathbb K\) is a field and \(F\) is a free group, then group algebra \(\mathbb K[F]\) embeds into a division ring.</i></t>
+    </p>
+    <div class="collapse" id="div_ring">
+        <div class="card card-body">
+            <i>Proof (sketch).</i> By <a href="#order">Theorem 6</a>, there is a total bi-invariant order \(\prec\) on \(F\). Consider the following set of formal power set of formal power series:
+            \[
+                \mathcal{MN}_\prec(\mathbb K[F]) = \left\{ \sum_{g\in G} \alpha_g g : \{g : \alpha_g \neq 0\} \ \text{is well ordered under} \prec \right\}.
+            \]
+            We have that \(\mathbb K[F] \subseteq \mathcal{MN}_\prec(\mathbb K[F])\) in a natural way. One can show that the operations of addition and multiplication on \(\mathbb K[F]\) naturally extend to \(\mathcal{MN}_\prec(\mathbb K[F])\); this reduces to showing that if \(A\) and \(B\) are well-ordered subset of \(\mathbb K[F]\), then \(A \cup B\) and \(AB\) are well-ordered. This makes
+            \(\mathcal{MN}_\prec(\mathbb K[F])\) into a ring called the <i>Malcev–Neumann power series ring</i> of \(\mathbb K[F]\) associated to the order \(\prec\). The key point is that \(\mathcal{MN}_\prec(\mathbb K[F])\) is actually a division ring. To see this, let \(x \in \mathcal{MN}_\prec(\mathbb K[F])\) be an arbitrary non-zero element. By multiplying \(x\) by some unit of the form \(\alpha g\) for some \(\alpha \in \mathbb K\) and \(g \in G\), we can assume that \(x = 1 + y\) where every element in the support of \(y\) is greater than \(1\) with respect to \(\prec\). Then \(x^{-1} = 1 - y + y^2 - y^3 + \cdots\) (we leave it as an exercise to check this is a well defined element of \(\mathcal{MN}_\prec(\mathbb K[F])\)). <span style="float: right;"> \(\square\)</span>
+        </div>
+    </div>
+
+    <p>
+        As a corollary, we can also establish the Stable Finiteness Conjecture for group algebras of free groups.
+    </p>
+
+    <p>
+        <t data-toggle="collapse" data-target="#stab_fin" aria-expanded="false" aria-controls="stab_fin"><b>Corollary 9.</b> <i>If \(F\) is a free group, then the group algebra \(\mathbb K[F]\) is stably finite for any field \(\mathbb K\).</i></t>
+    </p>
+    <div class="collapse" id="stab_fin">
+        <div class="card card-body">
+            <i>Proof.</i> By <a href="#div_ring">Theorem 8</a>, \(\mathbb K[F]\) embeds into a division ring. Since division rings are stably finite and stable finiteness passes to subrings, we conclude that \(\mathbb K[F]\) is stably finite.  <span style="float: right;"> \(\square\)</span>
+        </div>
+    </div>
 </body>
