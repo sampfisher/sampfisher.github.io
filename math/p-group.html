@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    .bord {
+        display: table;
+        padding: 3px;
+        border-radius: 10px;
+        border: 0.8px solid black;
+        background-origin: border-box;
+        background-color: #fcf3cb;
+        display: none;
+    }
+    .card-body { background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    .collapsing.panel {background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    /* container */
+    .right-sidebar {
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .right-sidebar > * {
+        width:100%;
+        padding:1rem;
+    }
+    @media (min-width:950px) {
+        .right-sidebar > *:nth-child(1) {
+            width:calc(75%);
+        }
+        .right-sidebar > *:nth-child(2) {
+            width:calc(25%);
+        }
+    }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    t {
+        color: #034682;
+    }
+    t:hover {
+        color:  #a93226;
+        transition: 0.3s;
+    }
+    a:link {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:hover {
+        color:  #a93226;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
+        font-style: italic, oblique;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
+        font-weight: bold;
+        font-style: italic, oblique;
+    }
+    body {
+        background-color:#e1edff;
+        padding-right: 10%;
+        padding-left: 10%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        font-family: "Computer Modern", sans-serif;
+        text-align: justify;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    ol {list-style-type: none;}
+    li:before {content: "(" counter(section, lower-roman) ") ";}
+    li { counter-increment: section;}
+    .topnav {
+        float: right;
+    }
+    .topnav a {
+        padding-left: 15px;
+    }
+</style>
+
+<div class="topnav" id="myTopnav">
+    <a href="../index.html">Home</a>
+    <a href="../math.html">Blog</a>
+</div>
+
+<body>
+</br>
+    <h3>The mod \(p\) group algebra of a \(p\)-group</h3>
+
+    <p>
+        Let \(G\) be a finite \(p\)-group. The goal of this post is to prove classical facts about the group algebra \(\mathbb{F}_p[G]\): the augmentation ideal of \(\mathbb F_p[G]\) is nilpotent and it is the unique maximal ideal (so \(\mathbb F_p[G]\) is a local ring). We will actually allow the coefficient ring to be slightly more general than \(\mathbb F_p\) in what follows.
+    </p>
+
+    <h4>The augmentation ideal</h4>
+
+    <p>
+        Let \(R\) be a ring and let \(G\) be a group. The <i>augmentation homomorphism</i> of the group ring \(R[G]\) is the ring homomorphism
+        \[
+            \alpha_{R[G]} \colon R[G] \to R, \qquad \sum_{g \in G} r_g g \mapsto \sum_{g \in G} r_g.
+        \]
+        Here, \(r_g \in R\) for all \(g \in G\) and all but finitely many \(r_g\)'s are non-zero. The <i>augmentation ideal</i> \(\omega_{R[G]}\) of \(R[G]\) is the kernel of \(\alpha_{R[G]}\). It plays a fundamental role in the study of \(R[G]\) and the group cohomology of \(G\).
+    </p>
+</body>
