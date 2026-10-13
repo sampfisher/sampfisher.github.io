@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    .bord {
+        display: table;
+        padding: 3px;
+        border-radius: 10px;
+        border: 0.8px solid black;
+        background-origin: border-box;
+        background-color: #fcf3cb;
+        display: none;
+    }
+    .card-body { background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    .collapsing.panel {background-color: #fcf3cb;
+        border: 0.8px solid black;
+        padding: 3px;
+        border-radius: 10px;
+    }
+    /* container */
+    .right-sidebar {
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .right-sidebar > * {
+        width:100%;
+        padding:1rem;
+    }
+    @media (min-width:950px) {
+        .right-sidebar > *:nth-child(1) {
+            width:calc(75%);
+        }
+        .right-sidebar > *:nth-child(2) {
+            width:calc(25%);
+        }
+    }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    t {
+        color: #034682;
+    }
+    t:hover {
+        color:  #a93226;
+        transition: 0.3s;
+    }
+    a:link {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #034682;
+        text-decoration: none;
+    }
+    a:hover {
+        color:  #a93226;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
+        font-style: italic, oblique;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
+        font-weight: bold;
+        font-style: italic, oblique;
+    }
+    body {
+        background-color:#e1edff;
+        padding-right: 10%;
+        padding-left: 10%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        font-family: "Computer Modern", sans-serif;
+        text-align: justify;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    ol {list-style-type: none;}
+    li:before {content: "(" counter(section, lower-roman) ") ";}
+    li { counter-increment: section;}
+    .topnav {
+        float: right;
+    }
+    .topnav a {
+        padding-left: 15px;
+    }
+</style>
+
+<div class="topnav" id="myTopnav">
+    <a href="../index.html">Home</a>
+    <a href="../math.html">Blog</a>
+</div>
+
+<body>
+
+<h3>The Borel Density Theorem</h3>
+
+<p>
+    In a reading group at ICMAT on arithmetic groups (organised by Macarena Arenas) I spoke about the Borel Density Theorem. The post covers what I talked about, and is based on chapter 4 of Dave Witte Morris's book <i>Introduction to Arithmetic Groups</i>. The main result we will prove is the following.
+</p>
+
+<p>
+    <b>Borel Density Theorem.</b> <i>Let \(G\) be a connected semisimple Lie group with no compact factors. If \(\Gamma < G\) is a lattice, then \(\Gamma\) is Zariski dense in \(G\). </i>
+</p>
+
+<p>
+    Throughout the post \(G\) will always denote a connected semisimple Lie group without compact factors and \(\Gamma\) will always be a lattice. Recall that a Lie group is <i>semisimple</i> if it decomposes as a direct product of simple Lie groups, where a Lie group is <i>simple</i> if it is not Abelian and it has no non-trivial, normal, closed, connected, proper subgroups. Moreover, following Witte Morris, we assume that \(G \subseteq \mathrm{SL}_n(\mathbb R)\) for some \(n \in \mathbb N\), i.e. Lie groups are by assumption linear.
+</p>
+
+<p>
+    The Borel Density Theorem will be a consequence of the following result.
+</p>
+
+<p>
+    <b>Theorem 1.</b> <i>Let \(V\) be a real or complex vector space, and let \(\rho \colon G \to \mathrm{GL}_m(V)\) be a continuous representation of \(G\) on \(V\).</i>
+    <ol>
+        <li>
+            <i>If \(v \in V\) is fixed by \(\Gamma\), then it is fixed by \(G\).</i>
+        </li>
+        <li>
+            <i>If \(W \subseteq V\) is fixed (set-wise) by \(\Gamma\), then it is fixed by \(G\).</i>
+        </li>
+    </ol>
+</p>
+
+<p>
+    The main goal of this post will be to prove Theorem 1. After that we will quickly derive some nice consequences.
+</p>
+
+<h4>1. Some basic facts about lattices in Lie groups</h4>
+
+<p>
+    Recall, \(\Gamma\) denotes a lattice in the connected semisimple Lie group \(G\) (which has no compact factors). An element of \(u \in G\) is <i>unipotent</i> if there exists \(n \in \mathbb N\) such that \((u - 1)^n = 0\).
+</p>
+
+<p>
+        <t data-toggle="collapse" data-target="#UP-generation" aria-expanded="false" aria-controls="UP-generation"><b>Fact 2.</b> <i>\(G\) is generated by its unipotent elements.</i></t>
+    </p>
+    <div class="collapse" id="UP-generation">
+        <div class="card card-body">
+            <i>Proof.</i> 
+                By working one fact at a time, we may assume that \(G\) is simple. It is clear that the unipotent elements generate a normal subgroup (the conjugate of a unipotent element is easily seen to be unipotent). This essentially finishes the proof, we just need to show that the identity
+                
+                
+                There
+        Hence, the unipotents generate \(G\). 
+            <span style="float: right;"> \(\square\)</span>
+        </div>
+        <br>
+    </div>
+</body>
